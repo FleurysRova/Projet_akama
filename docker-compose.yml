@@ -1,0 +1,41 @@
+# =====================================================================
+#  docker-compose.yml — Portfolio Elie Tinah Ramanjakavelosoa
+#  Lancement instantané : `docker compose up --build -d`
+# =====================================================================
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: production
+    container_name: elie-portfolio
+    image: elie-tinah/portfolio:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - HOSTNAME=0.0.0.0
+      - PORT=3000
+      # Ajoutez vos variables d'environnement de prod ici :
+      # - NEXT_PUBLIC_SITE_URL=https://votre-domaine.com
+      # - DATABASE_URL=...
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+    cap_drop:
+      - ALL
+    networks:
+      - portfolio-net
+
+networks:
+  portfolio-net:
+    driver: bridge

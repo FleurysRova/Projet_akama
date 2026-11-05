@@ -1,0 +1,438 @@
+"use client";
+
+import * as React from "react";
+import { motion } from "framer-motion";
+import {
+  Palette,
+  Sparkles,
+  Download,
+  Mail,
+  MapPin,
+  Volume2,
+  VolumeX,
+  Zap,
+  ArrowDownToLine,
+  Terminal,
+  Film,
+  Globe2,
+  Brush,
+  BadgeCheck,
+  Wand2,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { PROFILE, EXPERTISES } from "@/lib/profile-data";
+import { useAudio } from "@/components/audio-provider";
+import { cn } from "@/lib/utils";
+
+interface HeroDualProps {
+  onOpenQuickView: () => void;
+  onOpenTerminal: () => void;
+}
+
+export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
+  const { enabled: audioEnabled, toggle: toggleAudio, play } = useAudio();
+
+  const creativeSkills = EXPERTISES.find((e) => e.id === "creative")?.skills ?? [];
+
+  const handlePrimary = () => {
+    play("open");
+    onOpenTerminal();
+  };
+
+  const handleQuickView = () => {
+    play("toggle");
+    onOpenQuickView();
+  };
+
+  const handleDownload = () => {
+    play("success");
+    window.open(PROFILE.resumeUrl, "_blank");
+  };
+
+  return (
+    <section
+      id="hero"
+      className="relative isolate overflow-hidden pt-24 pb-16 md:pt-28 md:pb-24 aurora bg-grid"
+    >
+      {/* Floating decorative blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[8%] top-[15%] h-72 w-72 rounded-full bg-violet-500/25 blur-[100px] dark:bg-violet-500/15" />
+        <div className="absolute right-[12%] top-[8%] h-80 w-80 rounded-full bg-cyan-500/20 blur-[110px] dark:bg-cyan-500/10" />
+        <div className="absolute bottom-[5%] left-[45%] h-72 w-72 rounded-full bg-emerald-500/15 blur-[100px] dark:bg-emerald-500/10" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Top bar with name + live status */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 flex flex-wrap items-center justify-between gap-4"
+        >
+          <div className="flex items-center gap-3">
+            <div className="relative grid h-12 w-12 place-items-center rounded-xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 font-mono text-lg font-bold text-gradient-cv">
+              {PROFILE.initials}
+              <span className="absolute -right-1 -top-1 h-3 w-3">
+                <span className="pulse-dot absolute inset-0 block h-full w-full rounded-full bg-emerald-400" />
+              </span>
+            </div>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {PROFILE.country}
+              </p>
+              <p className="font-semibold leading-tight">{PROFILE.firstName} {PROFILE.lastName}</p>
+            </div>
+          </div>
+
+          <Badge
+            variant="outline"
+            className="group flex items-center gap-2 border-emerald-500/40 bg-emerald-500/5 px-3 py-1.5 text-emerald-600 dark:text-emerald-400"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="pulse-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="text-xs font-medium">
+              {PROFILE.availability}
+            </span>
+          </Badge>
+        </motion.div>
+
+        {/* ===== MAIN HERO : PHOTO + HEADLINE ===== */}
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
+          {/* Left : Name + headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.05 }}
+            className="order-2 lg:order-1"
+          >
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-500/5 px-3 py-1 text-xs font-mono text-violet-600 dark:text-violet-300 backdrop-blur">
+              <Wand2 className="h-3.5 w-3.5" />
+              <span>Creative Media Specialist</span>
+            </div>
+
+            {/* ★ NAME — agrandi */}
+            <h1 className="font-sans font-bold leading-[0.95] tracking-tight">
+              <span
+                className="block text-foreground"
+                style={{ fontSize: "clamp(2.75rem, 9vw, 7rem)" }}
+              >
+                Elie Tinah
+              </span>
+              <span
+                className="block text-gradient-cv"
+                style={{ fontSize: "clamp(2.25rem, 7vw, 5.5rem)" }}
+              >
+                Ramanjakavelosoa
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-xl text-lg font-medium text-foreground sm:text-xl">
+              {PROFILE.creativeTitle}
+            </p>
+            <p className="mt-3 max-w-2xl text-base text-muted-foreground sm:text-lg">
+              Basé à {PROFILE.location.replace(", Madagascar", "")}, Madagascar. Je transforme
+              une idée en univers visuel complet : <span className="text-violet-500 dark:text-violet-300">branding</span>,{" "}
+              <span className="text-cyan-500 dark:text-cyan-300">production vidéo studio</span> et{" "}
+              <span className="text-emerald-500 dark:text-emerald-300">stratégie de contenu</span>.
+              Autonomie, rigueur et créativité.
+            </p>
+
+            {/* CTA buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-7 flex flex-wrap items-center gap-3"
+            >
+              <Button
+                onClick={handlePrimary}
+                onMouseEnter={() => play("hover")}
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 to-cyan-600 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-xl hover:shadow-cyan-500/30"
+                size="lg"
+              >
+                <Terminal className="mr-2 h-4 w-4 transition-transform group-hover:rotate-3" />
+                Assistant IA
+              </Button>
+
+              <Button
+                onClick={handleQuickView}
+                onMouseEnter={() => play("hover")}
+                variant="outline"
+                size="lg"
+                className="rounded-full border-violet-500/40 bg-violet-500/5 px-6 py-2.5 text-sm font-medium text-violet-600 backdrop-blur transition-all hover:border-violet-500/70 hover:bg-violet-500/10 dark:text-violet-300"
+              >
+                <Zap className="mr-2 h-4 w-4" />
+                Mode Recruteur
+              </Button>
+
+              <Button
+                onClick={handleDownload}
+                onMouseEnter={() => play("hover")}
+                variant="ghost"
+                size="lg"
+                className="rounded-full px-5 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                CV PDF
+              </Button>
+
+              <Button
+                onClick={toggleAudio}
+                onMouseEnter={() => audioEnabled && play("hover")}
+                variant="ghost"
+                size="icon"
+                aria-label={audioEnabled ? "Couper le son" : "Activer le son"}
+                className={cn(
+                  "rounded-full border border-border/50 transition-all",
+                  audioEnabled
+                    ? "border-cyan-500/40 bg-cyan-500/10 text-cyan-500"
+                    : "text-muted-foreground",
+                )}
+              >
+                {audioEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+              </Button>
+            </motion.div>
+
+            {/* Bottom location strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground"
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5 text-cyan-500" />
+                {PROFILE.location}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Globe2 className="h-3.5 w-3.5 text-violet-500" />
+                {PROFILE.mobility}
+              </span>
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-cyan-500"
+                onMouseEnter={() => play("hover")}
+              >
+                <Mail className="h-3.5 w-3.5 text-emerald-500" />
+                {PROFILE.email}
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Right : Photo with creative frame */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, type: "spring", damping: 18 }}
+            className="order-1 mx-auto lg:order-2"
+          >
+            <ProfilePhoto />
+          </motion.div>
+        </div>
+
+        {/* Creative profile highlight card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="group relative mt-14 overflow-hidden rounded-2xl border border-violet-500/30 bg-card/60 p-6 backdrop-blur-md transition-all hover:border-violet-500/50 hover:shadow-2xl hover:shadow-violet-500/10 sm:p-8"
+        >
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-70">
+            <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-400 opacity-30 blur-3xl" />
+            <div className="absolute bottom-0 right-1/3 h-32 w-32 rounded-full bg-gradient-to-tr from-emerald-400 to-cyan-400 opacity-25 blur-2xl" />
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[auto_1fr] lg:items-center">
+            {/* Left : identity */}
+            <div className="flex items-center gap-4">
+              <div className="grid h-14 w-14 place-items-center rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-500/15 to-fuchsia-500/10 text-violet-500">
+                <Palette className="h-7 w-7" />
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
+                  Cœur de métier · Creative Media
+                </p>
+                <h3 className="text-xl font-semibold leading-tight sm:text-2xl">
+                  Design Graphique & Production Vidéo Studio
+                </h3>
+                <p className="mt-0.5 text-sm text-muted-foreground">
+                  Branding · Montage studio · Motion design · Habillage visuel
+                </p>
+              </div>
+            </div>
+
+            {/* Right : visual preview tiles */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { label: "Branding", grad: "from-violet-500 to-fuchsia-500", icon: Brush },
+                { label: "Studio Vidéo", grad: "from-cyan-500 to-blue-500", icon: Film },
+                { label: "Motion", grad: "from-emerald-500 to-teal-500", icon: Sparkles },
+              ].map((tile) => (
+                <div
+                  key={tile.label}
+                  className="group/tile relative aspect-[4/3] overflow-hidden rounded-lg border border-white/10"
+                >
+                  <div className={cn("absolute inset-0 bg-gradient-to-br opacity-90", tile.grad)} />
+                  <div className="absolute inset-0 bg-grid opacity-40" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 p-2 text-white">
+                    <tile.icon className="h-5 w-5 drop-shadow" />
+                    <span className="text-[10px] font-medium uppercase tracking-wider">
+                      {tile.label}
+                    </span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 transition-colors group-hover/tile:bg-black/20" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Skill chips */}
+          <div className="mt-6 flex flex-wrap gap-1.5">
+            {creativeSkills.slice(0, 10).map((s) => (
+              <Badge
+                key={s}
+                variant="secondary"
+                className="rounded-md border border-violet-500/15 bg-violet-500/5 px-2 py-0.5 text-[11px] font-medium text-violet-600 dark:text-violet-300"
+              >
+                {s}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Stats row */}
+          <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border/40 pt-5 text-center">
+            {[
+              { icon: Brush, label: "Branding", value: "Logos & chartes", color: "text-violet-500" },
+              { icon: Film, label: "Vidéo", value: "Studio & clips", color: "text-cyan-500" },
+              { icon: BadgeCheck, label: "Livraison", value: "De A à Z", color: "text-emerald-500" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <stat.icon className={cn("mx-auto mb-1 h-4 w-4", stat.color)} />
+                <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                  {stat.label}
+                </p>
+                <p className="text-xs font-semibold sm:text-sm">{stat.value}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="mt-12 flex justify-center"
+        >
+          <div className="flex flex-col items-center gap-1 text-muted-foreground">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+            <ArrowDownToLine className="h-4 w-4 animate-bounce text-violet-500" />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   ProfileAvatar — Avatar pro aux initiales "ET"
+   Aucune photo générée par IA représentant une personne.
+   Design : gradient néon + halo pulsé + anneau rotatif + badges.
+   ============================================================ */
+function ProfilePhoto() {
+  return (
+    <div className="group relative h-64 w-52 sm:h-80 sm:w-64 lg:h-96 lg:w-80">
+      {/* Glow halo */}
+      <div className="pointer-events-none absolute -inset-4 -z-10 rounded-full bg-gradient-to-br from-violet-500/40 via-cyan-500/30 to-emerald-500/20 opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-90" />
+
+      {/* Rotating gradient ring */}
+      <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-violet-500 via-cyan-500 to-emerald-500 opacity-70 blur-md transition-all duration-700 group-hover:opacity-100" />
+
+      {/* Avatar container — gradient + initials */}
+      <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-slate-950 via-violet-950/40 to-slate-950 shadow-2xl">
+        {/* Animated background grid */}
+        <div className="absolute inset-0 bg-grid opacity-30" />
+
+        {/* Radial glow center */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_60%)]" />
+
+        {/* Scanline overlay */}
+        <div className="pointer-events-none absolute inset-0 scanlines opacity-20" />
+
+        {/* Center content — Initials */}
+        <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 p-6">
+          {/* Avatar circle with initials */}
+          <div className="relative grid h-28 w-28 place-items-center rounded-full border-2 border-violet-500/40 bg-gradient-to-br from-violet-500/20 to-cyan-500/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 sm:h-36 sm:w-36">
+            {/* Inner rotating ring */}
+            <div className="absolute inset-0 rounded-full border border-cyan-500/30 [mask-image:linear-gradient(transparent_25%,black_50%,transparent_75%)]" />
+
+            {/* Pulsing dot at top */}
+            <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]">
+              <span className="pulse-dot absolute inset-0 block h-full w-full rounded-full bg-emerald-400" />
+            </span>
+
+            {/* Initials */}
+            <span
+              className="text-gradient-cv font-mono font-bold leading-none"
+              style={{ fontSize: "clamp(2.5rem, 7vw, 3.5rem)" }}
+            >
+              ET
+            </span>
+          </div>
+
+          {/* Name under avatar */}
+          <div className="text-center">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300/90">
+              Elie Tinah
+            </p>
+            <p className="text-xs font-semibold text-white sm:text-sm">
+              Ramanjakavelosoa
+            </p>
+          </div>
+
+          {/* Mini creative tags */}
+          <div className="flex flex-wrap justify-center gap-1.5">
+            {["Branding", "Studio", "Motion"].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-md border border-violet-500/20 bg-violet-500/10 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-violet-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Top badge */}
+        <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-slate-950/70 px-2.5 py-1 text-[10px] font-mono text-emerald-400 backdrop-blur-md">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="pulse-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          </span>
+          LIVE
+        </div>
+
+        {/* Bottom gradient + name overlay */}
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-4 pt-10">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300">
+            Creative Media Specialist
+          </p>
+          <p className="text-sm font-semibold text-white sm:text-base">
+            Madagascar 🇲🇬
+          </p>
+        </div>
+      </div>
+
+      {/* Floating decorative chips */}
+      <div className="absolute -right-3 top-1/4 float hidden rounded-lg border border-cyan-500/40 bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-cyan-400 backdrop-blur-md sm:block">
+        &lt;AI/&gt;
+      </div>
+      <div className="absolute -left-3 bottom-1/4 float hidden rounded-lg border border-violet-500/40 bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-violet-400 backdrop-blur-md sm:block" style={{ animationDelay: "1.5s" }}>
+        🎬 studio
+      </div>
+    </div>
+  );
+}
