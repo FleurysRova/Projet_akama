@@ -412,14 +412,6 @@ function ProfilePhoto() {
           </p>
         </div>
       </div>
-
-      {/* Floating decorative chips */}
-      <div className="absolute -right-3 top-1/4 float hidden rounded-lg border border-cyan-500/40 bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-cyan-400 backdrop-blur-md sm:block">
-        &lt;AI/&gt;
-      </div>
-      <div className="absolute -left-3 bottom-1/4 float hidden rounded-lg border border-violet-500/40 bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-violet-400 backdrop-blur-md sm:block" style={{ animationDelay: "1.5s" }}>
-        🎬 studio
-      </div>
     </div>
   );
 }
