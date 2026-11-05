@@ -7,6 +7,7 @@ import { About } from "@/components/About";
 import { Expertise } from "@/components/Expertise";
 import { Projects } from "@/components/Projects";
 import { AITools } from "@/components/AITools";
+import { Testimonials } from "@/components/Testimonials";
 import { Skills } from "@/components/Skills";
 import { LanguagesSection } from "@/components/LanguagesSection";
 import { EducationInterests } from "@/components/EducationInterests";
@@ -16,6 +17,7 @@ import { RecruiterQuickView } from "@/components/RecruiterQuickView";
 import { AudioProvider } from "@/components/audio-provider";
 import { SettingsProvider } from "@/components/settings-provider";
 import { SettingsPanel } from "@/components/SettingsPanel";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 
 export default function Home() {
   const [terminalOpen, setTerminalOpen] = React.useState(false);
@@ -86,6 +88,7 @@ export default function Home() {
             <About />
             <Expertise />
             <Projects />
+            <Testimonials />
             <AITools onOpenSettings={openSettings} />
             <Skills />
             <LanguagesSection />
@@ -110,6 +113,9 @@ export default function Home() {
             <FloatingSettingsButton onClick={openSettings} />
             <FloatingAssistantButton onClick={openTerminal} />
           </div>
+
+          {/* Bouton flottant "Retour en haut" */}
+          <ScrollToTopButton />
 
           {/* Modals */}
           <AIChatbotTerminal open={terminalOpen} onClose={closeTerminal} />

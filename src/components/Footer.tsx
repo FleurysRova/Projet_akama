@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PROFILE } from "@/lib/profile-data";
 import { useAudio } from "@/components/audio-provider";
+import { ContactForm } from "@/components/ContactForm";
 
 interface FooterProps {
   onOpenTerminal: () => void;
@@ -33,17 +34,18 @@ export function Footer({ onOpenTerminal }: FooterProps) {
       <div className="pointer-events-none absolute -bottom-20 left-1/2 -z-10 h-40 w-2/3 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* CTA banner */}
+        {/* CTA banner with contact form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="relative mb-10 overflow-hidden rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 via-violet-500/10 to-emerald-500/10 p-6 backdrop-blur-md sm:p-8"
+          className="relative mb-10 overflow-hidden rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 via-violet-500/10 to-emerald-500/10 p-5 backdrop-blur-md sm:p-8"
         >
           <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-cyan-500/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-12 -left-12 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl" />
-          <div className="relative flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
+          <div className="relative grid gap-6 lg:grid-cols-2 lg:gap-10">
+            {/* Left : pitch + status */}
             <div>
               <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-600 dark:text-emerald-400">
                 <span className="relative flex h-2 w-2">
@@ -61,30 +63,42 @@ export function Footer({ onOpenTerminal }: FooterProps) {
                 graphique, production vidéo studio et stratégie digitale —
                 local ou remote à l'international.
               </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                <Button
+                  onClick={() => {
+                    play("toggle");
+                    window.location.href = `mailto:${PROFILE.email}`;
+                  }}
+                  onMouseEnter={() => play("hover")}
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
+                >
+                  <Mail className="mr-2 h-3.5 w-3.5" />
+                  Email direct
+                </Button>
+                <Button
+                  onClick={() => {
+                    play("open");
+                    onOpenTerminal();
+                  }}
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
+                >
+                  <Terminal className="mr-2 h-3.5 w-3.5" />
+                  Assistant IA
+                </Button>
+              </div>
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <Button
-                onClick={() => {
-                  play("toggle");
-                  window.location.href = `mailto:${PROFILE.email}`;
-                }}
-                onMouseEnter={() => play("hover")}
-                className="bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
-              >
-                <Mail className="mr-2 h-4 w-4" />
-                Me contacter
-              </Button>
-              <Button
-                onClick={() => {
-                  play("open");
-                  onOpenTerminal();
-                }}
-                variant="outline"
-                className="border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
-              >
-                <Terminal className="mr-2 h-4 w-4" />
-                Assistant IA
-              </Button>
+
+            {/* Right : contact form */}
+            <div className="rounded-xl border border-border/40 bg-card/60 p-4 backdrop-blur-md sm:p-5">
+              <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
+                Écrivez-moi
+              </p>
+              <ContactForm />
             </div>
           </div>
         </motion.div>

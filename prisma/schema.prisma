@@ -30,3 +30,18 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// Messages envoyés via le formulaire de contact du portfolio.
+// Stockés en base pour suivi des demandes des recruteurs/clients.
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  // Statut de traitement : new | read | replied | archived
+  status    String   @default("new")
+  // Adresse IP optionnelle pour limiter le spam
+  ip        String?
+  createdAt DateTime @default(now())
+}

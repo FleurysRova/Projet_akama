@@ -534,3 +534,59 @@ export const AI_QA: QAItem[] = [
       "Email direct : elie.tinah.r@gmail.com — Disponible sur LinkedIn, GitHub et via le portfolio. Réponse rapide, idéale pour discuter d'un projet créatif ou d'une opportunité. Vous pouvez aussi télécharger son CV complet en un clic depuis ce portfolio.",
   },
 ];
+
+/* ============================================================
+   TÉMOIGNAGES — preuve sociale pour renforcer la crédibilité
+   ============================================================ */
+export interface Testimonial {
+  id: string;
+  author: string;
+  role: string;
+  company: string;
+  quote: string;
+  rating: number; // 1-5
+  color: "violet" | "cyan" | "green" | "amber";
+}
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "artiste-musical",
+    author: "Hery R.",
+    role: "Artiste musical",
+    company: "Indépendant · Antananarivo",
+    quote:
+      "Elie a transformé mon clip en une véritable œuvre. Son sens du storyboard, du tournage studio et du montage rythmé a sublimé ma musique. Professionnel, créatif et à l'écoute du début à la fin.",
+    rating: 5,
+    color: "violet",
+  },
+  {
+    id: "marque-locale",
+    author: "Nirina A.",
+    role: "Fondatrice",
+    company: "Startup e-commerce · Madagascar",
+    quote:
+      "Le branding complet qu'Elie a livré (logo, charte, visuels) a donné à notre marque une identité premium et internationale. Le tout dans un délai serré et avec une grande rigueur créative.",
+    rating: 5,
+    color: "cyan",
+  },
+  {
+    id: "createur-youtube",
+    author: "Tahiana B.",
+    role: "YouTuber",
+    company: "Chaîne lifestyle · 8K abonnés",
+    quote:
+      "L'habillage de chaîne qu'Elie a créé (intro, transitions, miniatures) a fait décoller ma notoriété. +8K abonnés en quelques mois grâce à une identité visuelle enfin cohérente.",
+    rating: 5,
+    color: "green",
+  },
+  {
+    id: "evenementiel",
+    author: "Rado M.",
+    role: "Organisateur d'événements",
+    company: "Festival culturel · Belo",
+    quote:
+      "Habillage visuel, motion design, vidéo promo : Elie gère tout de A à Z avec une autonomie incroyable. Aucun besoin de micro-manager, il orchestre la production créative avec rigueur.",
+    rating: 5,
+    color: "amber",
+  },
+];
