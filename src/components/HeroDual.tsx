@@ -345,10 +345,49 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
 /* ============================================================
    ProfilePhoto — Carte profil créatif avec photo de profil
    Design : photo plein cadre + gradient néon + halo pulsé +
-   anneau rotatif + badges LIVE + overlay nom/titre.
+   anneau rotatif + badges LIVE + overlay nom/titre + éléments
+   flottants (badges compétences, orbes, étincelles) autour de la photo.
    Fallback automatique sur les initiales "ET" si la photo
    est absente ou en erreur de chargement.
    ============================================================ */
+
+// Données des badges flottants (position + couleur + icône + label + délai)
+const FLOATING_BADGES = [
+  { id: "brand", pos: "top-right", icon: Brush, label: "Brand", color: "violet", delay: 0 },
+  { id: "motion", pos: "right-mid", icon: Film, label: "Motion", color: "cyan", delay: 0.6 },
+  { id: "studio", pos: "bottom-right", icon: Wand2, label: "Studio", color: "emerald", delay: 1.2 },
+  { id: "4k", pos: "left-mid", icon: Sparkles, label: "4K", color: "violet", delay: 0.9 },
+] as const;
+
+const COLOR_STYLES: Record<string, { border: string; text: string; glow: string; bg: string }> = {
+  violet: {
+    border: "border-violet-500/40",
+    text: "text-violet-300",
+    glow: "bg-violet-500/30",
+    bg: "bg-slate-950/80",
+  },
+  cyan: {
+    border: "border-cyan-500/40",
+    text: "text-cyan-300",
+    glow: "bg-cyan-500/30",
+    bg: "bg-slate-950/80",
+  },
+  emerald: {
+    border: "border-emerald-500/40",
+    text: "text-emerald-300",
+    glow: "bg-emerald-500/30",
+    bg: "bg-slate-950/80",
+  },
+};
+
+// Positions des badges flottants (absolues par rapport au conteneur photo)
+const POS_CLASSES: Record<string, string> = {
+  "top-right": "-right-3 top-[12%]",
+  "right-mid": "-right-4 top-1/2",
+  "bottom-right": "-right-3 bottom-[18%]",
+  "left-mid": "-left-4 top-1/2",
+};
+
 function ProfilePhoto() {
   const [photoError, setPhotoError] = React.useState(false);
 
@@ -412,6 +451,110 @@ function ProfilePhoto() {
           </p>
         </div>
       </div>
+
+      {/* ===== Éléments flottants décoratifs (badges + orbes + étincelles) =====
+          Masqués sur mobile pour ne pas surcharger. Animent en Y avec des
+          délais différents pour créer un effet parallaxe. */}
+
+      {/* Badges de compétences flottants */}
+      {FLOATING_BADGES.map((badge) => {
+        const colors = COLOR_STYLES[badge.color];
+        const Icon = badge.icon;
+        return (
+          <motion.div
+            key={badge.id}
+            className={cn(
+              "pointer-events-none absolute z-20 hidden sm:block",
+              POS_CLASSES[badge.pos],
+            )}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -10, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.4, delay: 0.2 + badge.delay },
+              scale: { duration: 0.4, delay: 0.2 + badge.delay },
+              y: {
+                duration: 4 + badge.delay * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: badge.delay,
+              },
+            }}
+          >
+            <div
+              className={cn(
+                "relative flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 font-mono text-[10px] font-medium backdrop-blur-md",
+                colors.border,
+                colors.bg,
+                colors.text,
+              )}
+            >
+              {/* Halo glow derrière le badge */}
+              <span
+                className={cn(
+                  "absolute -inset-1 -z-10 rounded-lg opacity-50 blur-md",
+                  colors.glow,
+                )}
+              />
+              <Icon className="h-3 w-3" />
+              <span className="uppercase tracking-wider">{badge.label}</span>
+            </div>
+          </motion.div>
+        );
+      })}
+
+      {/* Orbes flottants (petits cercles colorés) */}
+      {[
+        { pos: "-top-3 left-1/3", color: "bg-violet-400", size: "h-2 w-2", delay: 0.3 },
+        { pos: "-bottom-3 right-1/3", color: "bg-cyan-400", size: "h-1.5 w-1.5", delay: 1.5 },
+        { pos: "top-[35%] -left-2", color: "bg-emerald-400", size: "h-2 w-2", delay: 2 },
+      ].map((orb, i) => (
+        <motion.div
+          key={`orb-${i}`}
+          className={cn("pointer-events-none absolute z-20 hidden rounded-full sm:block", orb.pos, orb.color, orb.size)}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1.2, 0],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: orb.delay,
+          }}
+        />
+      ))}
+
+      {/* Étincelles (Sparkles) flottantes */}
+      {[
+        { pos: "top-[15%] -right-2", delay: 0.5 },
+        { pos: "bottom-[12%] -left-2", delay: 1.8 },
+      ].map((spark, i) => (
+        <motion.div
+          key={`spark-${i}`}
+          className={cn("pointer-events-none absolute z-20 hidden text-violet-300 sm:block", spark.pos)}
+          initial={{ opacity: 0, scale: 0, rotate: 0 }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+            rotate: [0, 90, 180],
+            y: [0, -12, 0],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: spark.delay,
+          }}
+        >
+          <Sparkles className="h-3 w-3" />
+        </motion.div>
+      ))}
     </div>
   );
 }

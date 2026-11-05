@@ -74,7 +74,7 @@ export default function Home() {
   return (
     <SettingsProvider>
       <AudioProvider>
-        <div className="relative flex min-h-screen flex-col bg-background">
+        <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-background">
           <Header
             onOpenTerminal={openTerminal}
             onOpenQuickView={openQuickView}
