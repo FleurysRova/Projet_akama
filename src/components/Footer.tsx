@@ -221,8 +221,8 @@ export function Footer({ onOpenTerminal }: FooterProps) {
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border/40 pt-6 text-xs text-muted-foreground sm:flex-row">
           <p className="flex items-center gap-1.5">
-            © {new Date().getFullYear()} {PROFILE.name}. Conçu avec
-            <Heart className="h-3 w-3 fill-violet-500 text-violet-500" />
+            © {new Date().getFullYear()} {PROFILE.name}.
+            {/* <Heart className="h-3 w-3 fill-violet-500 text-violet-500" /> */}
             & créativité.
           </p>
           <div className="flex items-center gap-4">
