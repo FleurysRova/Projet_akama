@@ -2,9 +2,10 @@
  * Données du profil — Elie Tinah Ramanjakavelosoa
  * Source unique de vérité pour tous les composants du portfolio.
  *
- * 📸 AUCUNE PHOTO : le portfolio utilise un avatar pro aux initiales "ET"
- * avec gradient néon + halo IA. Aucune image générée par IA représentant
- * une personne n'est utilisée (respect de la vie privée).
+ * 📸 PHOTO DE PROFIL : avatar personnel (`/Me_avatar.jpeg`) affiché dans le
+ * header, le hero (cartes Tech + Créatif) et la synthèse recruteur. L'avatar
+ * aux initiales "ET" reste affiché en repli (fallback) si la photo est absente
+ * ou en erreur de chargement.
  */
 
 export const PROFILE = {
@@ -12,6 +13,8 @@ export const PROFILE = {
   firstName: "Elie Tinah",
   lastName: "Ramanjakavelosoa",
   initials: "ET",
+  avatarUrl: "/Me_avatar.jpeg",
+  avatarAlt: "Photo d'Elie Tinah Ramanjakavelosoa — Creative Media Specialist",
   title: "Creative Media Specialist & Développeur de Logiciels",
   titleShort: "Creative Media Specialist",
   creativeTitle: "Creative Media Specialist",

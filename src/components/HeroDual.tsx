@@ -22,6 +22,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PROFILE, EXPERTISES } from "@/lib/profile-data";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
 import { useAudio } from "@/components/audio-provider";
 import { cn } from "@/lib/utils";
 
@@ -71,8 +72,8 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
           className="mb-8 flex flex-wrap items-center justify-between gap-4"
         >
           <div className="flex items-center gap-3">
-            <div className="relative grid h-12 w-12 place-items-center rounded-xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 font-mono text-lg font-bold text-gradient-cv">
-              {PROFILE.initials}
+            <div className="relative">
+              <ProfileAvatar size="md" alt={`${PROFILE.name} — avatar`} />
               <span className="absolute -right-1 -top-1 h-3 w-3">
                 <span className="pulse-dot absolute inset-0 block h-full w-full rounded-full bg-emerald-400" />
               </span>
@@ -338,11 +339,15 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
 }
 
 /* ============================================================
-   ProfileAvatar — Avatar pro aux initiales "ET"
-   Aucune photo générée par IA représentant une personne.
-   Design : gradient néon + halo pulsé + anneau rotatif + badges.
+   ProfilePhoto — Carte profil créatif avec photo de profil
+   Design : photo plein cadre + gradient néon + halo pulsé +
+   anneau rotatif + badges LIVE + overlay nom/titre.
+   Fallback automatique sur les initiales "ET" si la photo
+   est absente ou en erreur de chargement.
    ============================================================ */
 function ProfilePhoto() {
+  const [photoError, setPhotoError] = React.useState(false);
+
   return (
     <div className="group relative h-64 w-52 sm:h-80 sm:w-64 lg:h-96 lg:w-80">
       {/* Glow halo */}
@@ -351,62 +356,39 @@ function ProfilePhoto() {
       {/* Rotating gradient ring */}
       <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-violet-500 via-cyan-500 to-emerald-500 opacity-70 blur-md transition-all duration-700 group-hover:opacity-100" />
 
-      {/* Avatar container — gradient + initials */}
+      {/* Photo container — photo plein cadre + overlay sci-fi */}
       <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-slate-950 via-violet-950/40 to-slate-950 shadow-2xl">
-        {/* Animated background grid */}
-        <div className="absolute inset-0 bg-grid opacity-30" />
+        {/* Background photo (or fallback gradient + initials) */}
+        {photoError ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-grid p-6">
+            <div className="bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_60%)] absolute inset-0" />
+            <div className="relative grid h-28 w-28 place-items-center rounded-full border-2 border-violet-500/40 bg-gradient-to-br from-violet-500/20 to-cyan-500/20 backdrop-blur-sm sm:h-36 sm:w-36">
+              <div className="absolute inset-0 rounded-full border border-cyan-500/30 [mask-image:linear-gradient(transparent_25%,black_50%,transparent_75%)]" />
+              <span
+                className="text-gradient-cv font-mono font-bold leading-none"
+                style={{ fontSize: "clamp(2.5rem, 7vw, 3.5rem)" }}
+              >
+                ET
+              </span>
+            </div>
+            <p className="text-xs font-semibold text-white sm:text-sm">Ramanjakavelosoa</p>
+          </div>
+        ) : (
+          <img
+            src={PROFILE.avatarUrl}
+            alt={PROFILE.avatarAlt}
+            onError={() => setPhotoError(true)}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
 
-        {/* Radial glow center */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_60%)]" />
-
-        {/* Scanline overlay */}
+        {/* Scanline overlay (sci-fi feel) */}
         <div className="pointer-events-none absolute inset-0 scanlines opacity-20" />
 
-        {/* Center content — Initials */}
-        <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 p-6">
-          {/* Avatar circle with initials */}
-          <div className="relative grid h-28 w-28 place-items-center rounded-full border-2 border-violet-500/40 bg-gradient-to-br from-violet-500/20 to-cyan-500/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 sm:h-36 sm:w-36">
-            {/* Inner rotating ring */}
-            <div className="absolute inset-0 rounded-full border border-cyan-500/30 [mask-image:linear-gradient(transparent_25%,black_50%,transparent_75%)]" />
+        {/* Inner rotating ring (decorative frame) */}
+        <div className="pointer-events-none absolute inset-3 rounded-2xl border border-cyan-500/20 [mask-image:linear-gradient(transparent_25%,black_50%,transparent_75%)]" />
 
-            {/* Pulsing dot at top */}
-            <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]">
-              <span className="pulse-dot absolute inset-0 block h-full w-full rounded-full bg-emerald-400" />
-            </span>
-
-            {/* Initials */}
-            <span
-              className="text-gradient-cv font-mono font-bold leading-none"
-              style={{ fontSize: "clamp(2.5rem, 7vw, 3.5rem)" }}
-            >
-              ET
-            </span>
-          </div>
-
-          {/* Name under avatar */}
-          <div className="text-center">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300/90">
-              Elie Tinah
-            </p>
-            <p className="text-xs font-semibold text-white sm:text-sm">
-              Ramanjakavelosoa
-            </p>
-          </div>
-
-          {/* Mini creative tags */}
-          <div className="flex flex-wrap justify-center gap-1.5">
-            {["Branding", "Studio", "Motion"].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md border border-violet-500/20 bg-violet-500/10 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-violet-300"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Top badge */}
+        {/* Top badge — LIVE status */}
         <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-slate-950/70 px-2.5 py-1 text-[10px] font-mono text-emerald-400 backdrop-blur-md">
           <span className="relative flex h-1.5 w-1.5">
             <span className="pulse-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400" />

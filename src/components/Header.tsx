@@ -6,6 +6,7 @@ import { Menu, X, Terminal, Zap, Github, Linkedin, Mail, Settings2 } from "lucid
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { PROFILE } from "@/lib/profile-data";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
 import { useAudio } from "@/components/audio-provider";
 import { cn } from "@/lib/utils";
 
@@ -53,9 +54,8 @@ export function Header({ onOpenTerminal, onOpenQuickView, onOpenSettings }: Head
           onClick={() => play("click")}
           className="group flex items-center gap-2"
         >
-          <div className="relative grid h-9 w-9 place-items-center rounded-lg border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 font-mono text-xs font-bold text-gradient-cv">
-            {PROFILE.initials}
-          </div>
+          <ProfileAvatar size="sm" alt={`${PROFILE.name} — avatar`} />
+
           <div className="hidden sm:block">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               Portfolio

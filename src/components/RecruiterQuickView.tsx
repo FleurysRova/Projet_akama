@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PROFILE, LANGUAGES, EXPERTISES } from "@/lib/profile-data";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
 import { useAudio } from "@/components/audio-provider";
 
 interface RecruiterQuickViewProps {
@@ -72,9 +73,7 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/60 bg-card/95 px-5 py-4 backdrop-blur-md sm:px-7">
               <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 font-mono text-sm font-bold text-gradient-cv">
-                  {PROFILE.initials}
-                </div>
+                <ProfileAvatar size="md" alt={`${PROFILE.name} — avatar`} />
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
                     Quick-View · 30 sec
@@ -104,8 +103,13 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
                   Identité
                 </h3>
                 <div className="rounded-xl border border-border/60 bg-background/40 p-4">
-                  <p className="text-lg font-semibold leading-tight">{PROFILE.name}</p>
-                  <p className="mt-0.5 text-sm text-muted-foreground">{PROFILE.title}</p>
+                  <div className="flex items-center gap-3">
+                    <ProfileAvatar size="md" alt={`${PROFILE.name} — avatar`} className="shrink-0" />
+                    <div className="min-w-0">
+                      <p className="text-lg font-semibold leading-tight truncate">{PROFILE.name}</p>
+                      <p className="mt-0.5 text-sm text-muted-foreground truncate">{PROFILE.title}</p>
+                    </div>
+                  </div>
                   <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
                     <span className="inline-flex items-center gap-1.5">
                       <MapPin className="h-3.5 w-3.5 text-cyan-500" />

@@ -1,0 +1,252 @@
+/home/z/my-project/src/components/EducationInterests.tsx:40:            <div className="relative space-y-4 before:absolute before:left-[18px] before:top-2 before:h-full before:w-px before:bg-gradient-to-b before:from-cyan-500/50 before:via-violet-500/50 before:to-transparent">
+/home/z/my-project/src/components/EducationInterests.tsx:73:            <p className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-violet-500">
+/home/z/my-project/src/components/EducationInterests.tsx:90:                    className="group relative overflow-hidden rounded-xl border border-border/60 bg-card/60 p-4 backdrop-blur-md transition-colors hover:border-violet-500/40"
+/home/z/my-project/src/components/EducationInterests.tsx:92:                    <div className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full bg-violet-500/10 blur-2xl transition-opacity group-hover:bg-violet-500/20" />
+/home/z/my-project/src/components/EducationInterests.tsx:93:                    <Icon className="relative h-5 w-5 text-violet-500" />
+/home/z/my-project/src/components/EducationInterests.tsx:101:            <div className="mt-6 rounded-xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/5 to-violet-500/5 p-5">
+/home/z/my-project/src/components/EducationInterests.tsx:106:                <span className="text-gradient-cv">"L'autonomie, la rigueur et la créativité"</span>
+/home/z/my-project/src/components/ThemeToggle.tsx:70:          <span className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:shadow-[inset_0_0_12px_rgba(6,182,212,0.35)]" />
+/home/z/my-project/src/components/ThemeToggle.tsx:99:            theme === "system" && "bg-violet-500/10 text-violet-500",
+/home/z/my-project/src/components/Skills.tsx:27:  color: "cyan" | "violet" | "green";
+/home/z/my-project/src/components/Skills.tsx:47:    color: "violet",
+/home/z/my-project/src/components/Skills.tsx:79:  violet: {
+/home/z/my-project/src/components/Skills.tsx:80:    border: "border-violet-500/30",
+/home/z/my-project/src/components/Skills.tsx:81:    bg: "bg-violet-500/5",
+/home/z/my-project/src/components/Skills.tsx:82:    text: "text-violet-500 dark:text-violet-300",
+/home/z/my-project/src/components/Skills.tsx:83:    hoverBg: "hover:bg-violet-500/10",
+/home/z/my-project/src/components/Skills.tsx:115:          <p className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-violet-500">
+/home/z/my-project/src/components/Skills.tsx:122:            Compétences techniques, créatives et stratégiques — prêtes pour des
+/home/z/my-project/src/components/Skills.tsx:179:          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
+/home/z/my-project/src/components/Skills.tsx:180:          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
+/home/z/my-project/src/components/settings-provider.tsx:9: * Permet à l'utilisateur d'activer/désactiver en direct les effets IA
+/home/z/my-project/src/components/settings-provider.tsx:12: * Note : l'état initial est lu via un lazy initializer (sans effet),
+/home/z/my-project/src/components/settings-provider.tsx:39:  set: (key: EffectKey, value: boolean) => void;
+/home/z/my-project/src/components/settings-provider.tsx:40:  reset: () => void;
+/home/z/my-project/src/components/settings-provider.tsx:74:  // Évite le pattern `setState in useEffect` (lint react-hooks/set-state-in-effect).
+/home/z/my-project/src/components/settings-provider.tsx:90:      root.dataset[`fx${key[0].toUpperCase()}${key.slice(1)}`] = state[key]
+/home/z/my-project/src/components/settings-provider.tsx:107:  const set = React.useCallback((key: EffectKey, value: boolean) => {
+/home/z/my-project/src/components/settings-provider.tsx:111:  const reset = React.useCallback(() => setState(DEFAULTS), []);
+/home/z/my-project/src/components/settings-provider.tsx:118:    set,
+/home/z/my-project/src/components/settings-provider.tsx:119:    reset,
+/home/z/my-project/src/components/settings-provider.tsx:135:      set: () => {},
+/home/z/my-project/src/components/settings-provider.tsx:136:      reset: () => {},
+/home/z/my-project/src/components/HeroDual.tsx:59:      <div className="pointer-events-none absolute inset-0 -z-10">
+/home/z/my-project/src/components/HeroDual.tsx:60:        <div className="absolute left-[8%] top-[15%] h-72 w-72 rounded-full bg-violet-500/25 blur-[100px] dark:bg-violet-500/15" />
+/home/z/my-project/src/components/HeroDual.tsx:74:            <div className="relative grid h-12 w-12 place-items-center rounded-xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 font-mono text-lg font-bold text-gradient-cv">
+/home/z/my-project/src/components/HeroDual.tsx:75:              {PROFILE.initials}
+/home/z/my-project/src/components/HeroDual.tsx:77:                <span className="pulse-dot absolute inset-0 block h-full w-full rounded-full bg-emerald-400" />
+/home/z/my-project/src/components/HeroDual.tsx:111:            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-500/5 px-3 py-1 text-xs font-mono text-violet-600 dark:text-violet-300 backdrop-blur">
+/home/z/my-project/src/components/HeroDual.tsx:137:              une idée en univers visuel complet : <span className="text-violet-500 dark:text-violet-300">branding</span>,{" "}
+/home/z/my-project/src/components/HeroDual.tsx:138:              <span className="text-cyan-500 dark:text-cyan-300">production vidéo studio</span> et{" "}
+/home/z/my-project/src/components/HeroDual.tsx:140:              Autonomie, rigueur et créativité.
+/home/z/my-project/src/components/HeroDual.tsx:153:                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-violet-500 to-cyan-600 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-violet-500/20 transition-all hover:shadow-xl hover:shadow-cyan-500/30"
+/home/z/my-project/src/components/HeroDual.tsx:165:                className="rounded-full border-violet-500/40 bg-violet-500/5 px-6 py-2.5 text-sm font-medium text-violet-600 backdrop-blur transition-all hover:border-violet-500/70 hover:bg-violet-500/10 dark:text-violet-300"
+/home/z/my-project/src/components/HeroDual.tsx:211:                <Globe2 className="h-3.5 w-3.5 text-violet-500" />
+/home/z/my-project/src/components/HeroDual.tsx:232:            <ProfilePhoto />
+/home/z/my-project/src/components/HeroDual.tsx:241:          className="group relative mt-14 overflow-hidden rounded-2xl border border-violet-500/30 bg-card/60 p-6 backdrop-blur-md transition-all hover:border-violet-500/50 hover:shadow-2xl hover:shadow-violet-500/10 sm:p-8"
+/home/z/my-project/src/components/HeroDual.tsx:243:          <div className="pointer-events-none absolute inset-0 -z-10 opacity-70">
+/home/z/my-project/src/components/HeroDual.tsx:244:            <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-400 opacity-30 blur-3xl" />
+/home/z/my-project/src/components/HeroDual.tsx:251:              <div className="grid h-14 w-14 place-items-center rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-500/15 to-fuchsia-500/10 text-violet-500">
+/home/z/my-project/src/components/HeroDual.tsx:255:                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
+/home/z/my-project/src/components/HeroDual.tsx:270:                { label: "Branding", grad: "from-violet-500 to-fuchsia-500", icon: Brush },
+/home/z/my-project/src/components/HeroDual.tsx:278:                  <div className={cn("absolute inset-0 bg-gradient-to-br opacity-90", tile.grad)} />
+/home/z/my-project/src/components/HeroDual.tsx:279:                  <div className="absolute inset-0 bg-grid opacity-40" />
+/home/z/my-project/src/components/HeroDual.tsx:280:                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 p-2 text-white">
+/home/z/my-project/src/components/HeroDual.tsx:286:                  <div className="absolute inset-0 bg-black/0 transition-colors group-hover/tile:bg-black/20" />
+/home/z/my-project/src/components/HeroDual.tsx:298:                className="rounded-md border border-violet-500/15 bg-violet-500/5 px-2 py-0.5 text-[11px] font-medium text-violet-600 dark:text-violet-300"
+/home/z/my-project/src/components/HeroDual.tsx:308:              { icon: Brush, label: "Branding", value: "Logos & chartes", color: "text-violet-500" },
+/home/z/my-project/src/components/HeroDual.tsx:332:            <ArrowDownToLine className="h-4 w-4 animate-bounce text-violet-500" />
+/home/z/my-project/src/components/HeroDual.tsx:341:   ProfileAvatar — Avatar pro aux initiales "ET"
+/home/z/my-project/src/components/HeroDual.tsx:345:function ProfilePhoto() {
+/home/z/my-project/src/components/HeroDual.tsx:349:      <div className="pointer-events-none absolute -inset-4 -z-10 rounded-full bg-gradient-to-br from-violet-500/40 via-cyan-500/30 to-emerald-500/20 opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-90" />
+/home/z/my-project/src/components/HeroDual.tsx:352:      <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-violet-500 via-cyan-500 to-emerald-500 opacity-70 blur-md transition-all duration-700 group-hover:opacity-100" />
+/home/z/my-project/src/components/HeroDual.tsx:354:      {/* Avatar container — gradient + initials */}
+/home/z/my-project/src/components/HeroDual.tsx:355:      <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-slate-950 via-violet-950/40 to-slate-950 shadow-2xl">
+/home/z/my-project/src/components/HeroDual.tsx:357:        <div className="absolute inset-0 bg-grid opacity-30" />
+/home/z/my-project/src/components/HeroDual.tsx:360:        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_60%)]" />
+/home/z/my-project/src/components/HeroDual.tsx:363:        <div className="pointer-events-none absolute inset-0 scanlines opacity-20" />
+/home/z/my-project/src/components/HeroDual.tsx:365:        {/* Center content — Initials */}
+/home/z/my-project/src/components/HeroDual.tsx:367:          {/* Avatar circle with initials */}
+/home/z/my-project/src/components/HeroDual.tsx:368:          <div className="relative grid h-28 w-28 place-items-center rounded-full border-2 border-violet-500/40 bg-gradient-to-br from-violet-500/20 to-cyan-500/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110 sm:h-36 sm:w-36">
+/home/z/my-project/src/components/HeroDual.tsx:370:            <div className="absolute inset-0 rounded-full border border-cyan-500/30 [mask-image:linear-gradient(transparent_25%,black_50%,transparent_75%)]" />
+/home/z/my-project/src/components/HeroDual.tsx:374:              <span className="pulse-dot absolute inset-0 block h-full w-full rounded-full bg-emerald-400" />
+/home/z/my-project/src/components/HeroDual.tsx:377:            {/* Initials */}
+/home/z/my-project/src/components/HeroDual.tsx:382:              ET
+/home/z/my-project/src/components/HeroDual.tsx:388:            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300/90">
+/home/z/my-project/src/components/HeroDual.tsx:401:                className="rounded-md border border-violet-500/20 bg-violet-500/10 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-violet-300"
+/home/z/my-project/src/components/HeroDual.tsx:419:        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-4 pt-10">
+/home/z/my-project/src/components/HeroDual.tsx:420:          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300">
+/home/z/my-project/src/components/HeroDual.tsx:433:      <div className="absolute -left-3 bottom-1/4 float hidden rounded-lg border border-violet-500/40 bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-violet-400 backdrop-blur-md sm:block" style={{ animationDelay: "1.5s" }}>
+/home/z/my-project/src/components/Header.tsx:43:        "fixed inset-x-0 top-0 z-40 transition-all duration-300",
+/home/z/my-project/src/components/Header.tsx:56:          <div className="relative grid h-9 w-9 place-items-center rounded-lg border border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 font-mono text-xs font-bold text-gradient-cv">
+/home/z/my-project/src/components/Header.tsx:57:            {PROFILE.initials}
+/home/z/my-project/src/components/Header.tsx:93:              target="_blank"
+/home/z/my-project/src/components/Header.tsx:109:              target="_blank"
+/home/z/my-project/src/components/Header.tsx:129:            className="h-9 w-9 rounded-full border border-violet-500/30 text-violet-500 hover:border-violet-500/60 hover:bg-violet-500/10"
+/home/z/my-project/src/components/Header.tsx:142:            className="hidden h-9 gap-1.5 border-violet-500/40 bg-violet-500/5 text-violet-600 hover:bg-violet-500/10 dark:text-violet-300 lg:flex"
+/home/z/my-project/src/components/Header.tsx:155:            className="h-9 gap-1.5 bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
+/home/z/my-project/src/components/Header.tsx:205:                  className="flex-1 border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
+/home/z/my-project/src/components/LanguagesSection.tsx:14:      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-40" />
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:36:  sideOffset = 4,
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:43:        sideOffset={sideOffset}
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:64:  inset,
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:68:  inset?: boolean
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:74:      data-inset={inset}
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:77:        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:148:  inset,
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:151:  inset?: boolean
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:156:      data-inset={inset}
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:158:        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:203:  inset,
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:207:  inset?: boolean
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:212:      data-inset={inset}
+/home/z/my-project/src/components/ui/dropdown-menu.tsx:214:        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
+/home/z/my-project/src/components/ui/input-otp.tsx:47:  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {}
+/home/z/my-project/src/components/ui/input-otp.tsx:60:      {hasFakeCaret && (
+/home/z/my-project/src/components/ui/input-otp.tsx:61:        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+/home/z/my-project/src/components/ui/input-otp.tsx:62:          <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+/home/z/my-project/src/components/ui/tooltip.tsx:39:  sideOffset = 0,
+/home/z/my-project/src/components/ui/tooltip.tsx:47:        sideOffset={sideOffset}
+/home/z/my-project/src/components/ui/calendar.tsx:51:          "flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between",
+/home/z/my-project/src/components/ui/calendar.tsx:77:          "absolute bg-popover inset-0 opacity-0",
+/home/z/my-project/src/components/ui/alert-dialog.tsx:39:        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+/home/z/my-project/src/components/ui/chart.tsx:324:  let configLabelKey: string = key
+/home/z/my-project/src/components/ui/dialog.tsx:41:        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+/home/z/my-project/src/components/ui/dialog.tsx:72:            className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+/home/z/my-project/src/components/Expertise.tsx:33:  violet: {
+/home/z/my-project/src/components/Expertise.tsx:34:    ring: "ring-violet-500/30",
+/home/z/my-project/src/components/Expertise.tsx:35:    bg: "bg-violet-500/10",
+/home/z/my-project/src/components/Expertise.tsx:36:    text: "text-violet-500 dark:text-violet-300",
+/home/z/my-project/src/components/Expertise.tsx:37:    border: "border-violet-500/30",
+/home/z/my-project/src/components/Expertise.tsx:38:    glow: "group-hover:shadow-violet-500/20",
+/home/z/my-project/src/components/Expertise.tsx:39:    check: "text-violet-500",
+/home/z/my-project/src/components/Expertise.tsx:73:            par la stratégie digitale internationale — un profil complet.
+/home/z/my-project/src/components/Expertise.tsx:105:                        "grid h-12 w-12 place-items-center rounded-xl border ring-1 ring-inset",
+/home/z/my-project/src/components/ui/sheet.tsx:9:function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
+/home/z/my-project/src/components/ui/sheet.tsx:10:  return <SheetPrimitive.Root data-slot="sheet" {...props} />
+/home/z/my-project/src/components/ui/sheet.tsx:16:  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />
+/home/z/my-project/src/components/ui/sheet.tsx:22:  return <SheetPrimitive.Close data-slot="sheet-close" {...props} />
+/home/z/my-project/src/components/ui/sheet.tsx:28:  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />
+/home/z/my-project/src/components/ui/sheet.tsx:37:      data-slot="sheet-overlay"
+/home/z/my-project/src/components/ui/sheet.tsx:39:        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+/home/z/my-project/src/components/ui/sheet.tsx:59:        data-slot="sheet-content"
+/home/z/my-project/src/components/ui/sheet.tsx:63:            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
+/home/z/my-project/src/components/ui/sheet.tsx:65:            "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
+/home/z/my-project/src/components/ui/sheet.tsx:67:            "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b",
+/home/z/my-project/src/components/ui/sheet.tsx:69:            "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
+/home/z/my-project/src/components/ui/sheet.tsx:75:        <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
+/home/z/my-project/src/components/ui/sheet.tsx:87:      data-slot="sheet-header"
+/home/z/my-project/src/components/ui/sheet.tsx:97:      data-slot="sheet-footer"
+/home/z/my-project/src/components/ui/sheet.tsx:110:      data-slot="sheet-title"
+/home/z/my-project/src/components/ui/sheet.tsx:123:      data-slot="sheet-description"
+/home/z/my-project/src/components/ui/sheet.tsx:131:  Sheet,
+/home/z/my-project/src/components/ui/popover.tsx:23:  sideOffset = 4,
+/home/z/my-project/src/components/ui/popover.tsx:31:        sideOffset={sideOffset}
+/home/z/my-project/src/components/ui/context-menu.tsx:58:  inset,
+/home/z/my-project/src/components/ui/context-menu.tsx:62:  inset?: boolean
+/home/z/my-project/src/components/ui/context-menu.tsx:67:      data-inset={inset}
+/home/z/my-project/src/components/ui/context-menu.tsx:69:        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+/home/z/my-project/src/components/ui/context-menu.tsx:116:  inset,
+/home/z/my-project/src/components/ui/context-menu.tsx:120:  inset?: boolean
+/home/z/my-project/src/components/ui/context-menu.tsx:126:      data-inset={inset}
+/home/z/my-project/src/components/ui/context-menu.tsx:129:        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+/home/z/my-project/src/components/ui/context-menu.tsx:189:  inset,
+/home/z/my-project/src/components/ui/context-menu.tsx:192:  inset?: boolean
+/home/z/my-project/src/components/ui/context-menu.tsx:197:      data-inset={inset}
+/home/z/my-project/src/components/ui/context-menu.tsx:199:        "text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+/home/z/my-project/src/components/ui/toast.tsx:80:      "absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-1 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600",
+/home/z/my-project/src/components/About.tsx:14:      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50" />
+/home/z/my-project/src/components/About.tsx:16:      <div className="pointer-events-none absolute -right-20 bottom-10 -z-10 h-60 w-60 rounded-full bg-violet-500/10 blur-3xl" />
+/home/z/my-project/src/components/About.tsx:34:          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/5 px-3 py-1.5 text-xs text-violet-600 dark:text-violet-300">
+/home/z/my-project/src/components/About.tsx:50:              <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-cyan-500/20 to-violet-500/20 blur-2xl" />
+/home/z/my-project/src/components/About.tsx:55:                Doté d'une excellente capacité d'adaptation et d'une maîtrise
+/home/z/my-project/src/components/About.tsx:58:                <span className="font-semibold text-violet-500">créativité</span>,{" "}
+/home/z/my-project/src/components/About.tsx:59:                <span className="font-semibold text-cyan-500">autonomie</span> et{" "}
+/home/z/my-project/src/components/About.tsx:86:                  <Globe2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-500" />
+/home/z/my-project/src/components/ui/menubar.tsx:70:  alignOffset = -4,
+/home/z/my-project/src/components/ui/menubar.tsx:71:  sideOffset = 8,
+/home/z/my-project/src/components/ui/menubar.tsx:79:        alignOffset={alignOffset}
+/home/z/my-project/src/components/ui/menubar.tsx:80:        sideOffset={sideOffset}
+/home/z/my-project/src/components/ui/menubar.tsx:93:  inset,
+/home/z/my-project/src/components/ui/menubar.tsx:97:  inset?: boolean
+/home/z/my-project/src/components/ui/menubar.tsx:103:      data-inset={inset}
+/home/z/my-project/src/components/ui/menubar.tsx:106:        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+/home/z/my-project/src/components/ui/menubar.tsx:166:  inset,
+/home/z/my-project/src/components/ui/menubar.tsx:169:  inset?: boolean
+/home/z/my-project/src/components/ui/menubar.tsx:174:      data-inset={inset}
+/home/z/my-project/src/components/ui/menubar.tsx:176:        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
+/home/z/my-project/src/components/ui/menubar.tsx:221:  inset,
+/home/z/my-project/src/components/ui/menubar.tsx:225:  inset?: boolean
+/home/z/my-project/src/components/ui/menubar.tsx:230:      data-inset={inset}
+/home/z/my-project/src/components/ui/menubar.tsx:232:        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[inset]:pl-8",
+/home/z/my-project/src/components/RecruiterQuickView.tsx:61:          className="fixed inset-0 z-50 flex items-end justify-center bg-background/80 backdrop-blur-md sm:items-center sm:p-4"
+/home/z/my-project/src/components/RecruiterQuickView.tsx:70:            className="relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-2xl border border-violet-500/30 bg-card shadow-2xl shadow-violet-500/20 sm:rounded-2xl"
+/home/z/my-project/src/components/RecruiterQuickView.tsx:75:                <div className="grid h-11 w-11 place-items-center rounded-xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 font-mono text-sm font-bold text-gradient-cv">
+/home/z/my-project/src/components/RecruiterQuickView.tsx:76:                  {PROFILE.initials}
+/home/z/my-project/src/components/RecruiterQuickView.tsx:79:                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
+/home/z/my-project/src/components/RecruiterQuickView.tsx:115:                      <Globe2 className="h-3.5 w-3.5 text-violet-500" />
+/home/z/my-project/src/components/RecruiterQuickView.tsx:136:                  <Sparkles className="h-4 w-4 text-violet-500" />
+/home/z/my-project/src/components/RecruiterQuickView.tsx:157:                    <p className="mb-1.5 font-mono text-[10px] uppercase tracking-wider text-violet-500">
+/home/z/my-project/src/components/RecruiterQuickView.tsx:165:                          className="border-violet-500/30 bg-violet-500/5 px-2 py-0.5 text-[11px] text-violet-600 dark:text-violet-300"
+/home/z/my-project/src/components/RecruiterQuickView.tsx:219:                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-500" />
+/home/z/my-project/src/components/RecruiterQuickView.tsx:229:              <section className="rounded-xl border border-border/60 bg-gradient-to-br from-cyan-500/5 to-violet-500/5 p-4">
+/home/z/my-project/src/components/RecruiterQuickView.tsx:246:                    className="flex items-center gap-2 rounded-lg border border-border/60 bg-card px-3 py-2 text-xs transition-all hover:border-violet-500/40 hover:bg-violet-500/5"
+/home/z/my-project/src/components/RecruiterQuickView.tsx:248:                    <Phone className="h-3.5 w-3.5 text-violet-500" />
+/home/z/my-project/src/components/RecruiterQuickView.tsx:260:                className="flex-1 bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
+/home/z/my-project/src/components/RecruiterQuickView.tsx:269:                className="border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
+/home/z/my-project/src/components/ui/sidebar.tsx:14:  Sheet,
+/home/z/my-project/src/components/ui/sidebar.tsx:19:} from "@/components/ui/sheet"
+/home/z/my-project/src/components/ui/sidebar.tsx:142:            "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+/home/z/my-project/src/components/ui/sidebar.tsx:163:  variant?: "sidebar" | "floating" | "inset"
+/home/z/my-project/src/components/ui/sidebar.tsx:185:      <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+/home/z/my-project/src/components/ui/sidebar.tsx:204:      </Sheet>
+/home/z/my-project/src/components/ui/sidebar.tsx:224:          variant === "floating" || variant === "inset"
+/home/z/my-project/src/components/ui/sidebar.tsx:232:          "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
+/home/z/my-project/src/components/ui/sidebar.tsx:236:          // Adjust the padding for floating and inset variants.
+/home/z/my-project/src/components/ui/sidebar.tsx:237:          variant === "floating" || variant === "inset"
+/home/z/my-project/src/components/ui/sidebar.tsx:294:        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] sm:flex",
+/home/z/my-project/src/components/ui/sidebar.tsx:307:function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
+/home/z/my-project/src/components/ui/sidebar.tsx:310:      data-slot="sidebar-inset"
+/home/z/my-project/src/components/ui/sidebar.tsx:313:        "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
+/home/z/my-project/src/components/ui/sidebar.tsx:431:        "after:absolute after:-inset-2 md:after:hidden",
+/home/z/my-project/src/components/ui/sidebar.tsx:566:        "after:absolute after:-inset-2 md:after:hidden",
+/home/z/my-project/src/components/ui/sidebar.tsx:711:  SidebarInset,
+/home/z/my-project/src/components/ui/resizable.tsx:42:        "bg-border focus-visible:ring-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:translate-x-0 data-[panel-group-direction=vertical]:after:-translate-y-1/2 [&[data-panel-group-direction=vertical]>div]:rotate-90",
+/home/z/my-project/src/components/ui/drawer.tsx:40:        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+/home/z/my-project/src/components/ui/drawer.tsx:60:          "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
+/home/z/my-project/src/components/ui/drawer.tsx:61:          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
+/home/z/my-project/src/components/ui/drawer.tsx:62:          "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=right]:sm:max-w-sm",
+/home/z/my-project/src/components/ui/drawer.tsx:63:          "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
+/home/z/my-project/src/components/ui/hover-card.tsx:25:  sideOffset = 4,
+/home/z/my-project/src/components/ui/hover-card.tsx:33:        sideOffset={sideOffset}
+/home/z/my-project/src/components/ui/button.tsx:22:        link: "text-primary underline-offset-4 hover:underline",
+/home/z/my-project/src/components/SettingsPanel.tsx:42:    description: "Dégradés radiaux animés cyan/violet/vert, type réseau de neurones vivant.",
+/home/z/my-project/src/components/SettingsPanel.tsx:44:    color: "text-violet-500",
+/home/z/my-project/src/components/SettingsPanel.tsx:63:    description: "Halo lumineux dégradé sur les headlines et accents clés.",
+/home/z/my-project/src/components/SettingsPanel.tsx:79:    color: "text-violet-500",
+/home/z/my-project/src/components/SettingsPanel.tsx:93:    color: "text-violet-500",
+/home/z/my-project/src/components/SettingsPanel.tsx:108:          className="fixed inset-0 z-50 flex items-end justify-end bg-background/70 backdrop-blur-md sm:items-center sm:justify-end sm:p-4"
+/home/z/my-project/src/components/SettingsPanel.tsx:117:            className="relative flex h-[90vh] w-full max-w-md flex-col overflow-hidden border border-violet-500/30 bg-card shadow-2xl shadow-violet-500/20 sm:h-[85vh] sm:rounded-2xl"
+/home/z/my-project/src/components/SettingsPanel.tsx:120:            <div className="flex items-center justify-between border-b border-border/60 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 px-5 py-4">
+/home/z/my-project/src/components/SettingsPanel.tsx:122:                <div className="grid h-10 w-10 place-items-center rounded-xl border border-violet-500/40 bg-violet-500/10 text-violet-500">
+/home/z/my-project/src/components/SettingsPanel.tsx:126:                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
+/home/z/my-project/src/components/SettingsPanel.tsx:146:                <Sparkles className="h-3.5 w-3.5 text-violet-500" />
+/home/z/my-project/src/components/SettingsPanel.tsx:154:                onClick={settings.reset}
+/home/z/my-project/src/components/SettingsPanel.tsx:177:                          ? "border-violet-500/30 bg-violet-500/5"
+/home/z/my-project/src/components/SettingsPanel.tsx:185:                            ? "border-violet-500/40 bg-violet-500/10"
+/home/z/my-project/src/components/SettingsPanel.tsx:197:                              className="h-4 border-violet-500/30 bg-violet-500/10 px-1 text-[9px] font-mono text-violet-500"
+/home/z/my-project/src/components/SettingsPanel.tsx:214:                            ? "border-violet-500/50 bg-gradient-to-r from-violet-500 to-cyan-500"
+/home/z/my-project/src/components/SettingsPanel.tsx:231:              <div className="mt-4 rounded-xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/5 to-violet-500/5 p-3">
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:67:      let i = 0;
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:140:  const handleReset = () => {
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:155:          className="fixed inset-0 z-50 flex items-end justify-center bg-background/80 p-0 backdrop-blur-md sm:items-center sm:p-4"
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:186:                  onClick={handleReset}
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:271:                onChange={(e) => setInput(e.target.value)}
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:280:                className="bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:311:            ? "bg-violet-500/15 text-violet-400"
+/home/z/my-project/src/components/AIChatbotTerminal.tsx:321:            ? "bg-violet-500/10 text-violet-100"
+/home/z/my-project/src/components/AITools.tsx:38:  violet: {
+/home/z/my-project/src/components/AITools.tsx:39:    border: "border-violet-500/30",
+/home/z/my-project/src/components/AITools.tsx:40:    bg: "bg-violet-500/10",
+
+[Showing results with pagination = limit: 250]
