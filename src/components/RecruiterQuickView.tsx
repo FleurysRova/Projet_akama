@@ -16,6 +16,7 @@ import {
   Briefcase,
   CheckCircle2,
   Calendar,
+  Printer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -49,6 +50,13 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
     document.body.removeChild(link);
   };
 
+  const handlePrint = () => {
+    play("toggle");
+    // Lance l'impression navigateur (l'utilisateur peut "Save as PDF")
+    // Le print CSS masque tout sauf le modal via la classe `print:print-only`
+    window.print();
+  };
+
   const handleContact = () => {
     play("toggle");
     window.location.href = `mailto:${PROFILE.email}`;
@@ -74,7 +82,7 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
             exit={{ y: 40, opacity: 0, scale: 0.98 }}
             transition={{ type: "spring", damping: 28, stiffness: 320 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-2xl border border-violet-500/30 bg-card shadow-2xl shadow-violet-500/20 sm:rounded-2xl"
+            className="recruiter-print relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-2xl border border-violet-500/30 bg-card shadow-2xl shadow-violet-500/20 sm:rounded-2xl"
           >
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/60 bg-card/95 px-5 py-4 backdrop-blur-md sm:px-7">
@@ -263,14 +271,24 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
             </div>
 
             {/* Sticky CTA footer */}
-            <div className="sticky bottom-0 z-10 flex gap-2 border-t border-border/60 bg-card/95 px-5 py-3 backdrop-blur-md sm:px-7">
+            <div className="sticky bottom-0 z-10 flex flex-wrap gap-2 border-t border-border/60 bg-card/95 px-5 py-3 backdrop-blur-md sm:px-7">
               <Button
                 onClick={handleDownload}
                 onMouseEnter={() => play("hover")}
                 className="flex-1 bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
               >
                 <Download className="mr-2 h-4 w-4" />
-                Télécharger le CV PDF
+                CV PDF
+              </Button>
+              <Button
+                onClick={handlePrint}
+                onMouseEnter={() => play("hover")}
+                variant="outline"
+                className="border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
+              >
+                <Printer className="mr-2 h-4 w-4" />
+                <span className="hidden sm:inline">Imprimer / Save PDF</span>
+                <span className="sm:hidden">PDF</span>
               </Button>
               <Button
                 onClick={handleContact}
@@ -279,7 +297,8 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
                 className="border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
               >
                 <Mail className="mr-2 h-4 w-4" />
-                Contacter
+                <span className="hidden sm:inline">Contacter</span>
+                <span className="sm:hidden">Mail</span>
               </Button>
             </div>
           </motion.div>

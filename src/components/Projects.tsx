@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Film,
   Brush,
@@ -102,11 +103,56 @@ export function Projects() {
                 transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
                 whileHover={{ y: -4 }}
                 className={cn(
-                  "group relative overflow-hidden rounded-2xl border bg-card/60 p-6 backdrop-blur-md transition-all hover:shadow-xl sm:p-7",
+                  "group relative flex flex-col overflow-hidden rounded-2xl border bg-card/60 backdrop-blur-md transition-all hover:shadow-xl",
                   styles.border,
                   "hover:shadow-violet-500/10",
                 )}
               >
+                {/* Image cover — visible si imageUrl défini, zoom au hover */}
+                {project.imageUrl && (
+                  <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-border/40">
+                    <Image
+                      src={project.imageUrl}
+                      alt={`${project.title} — illustration`}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    {/* Overlay gradient for legibility + color tint */}
+                    <div
+                      className={cn(
+                        "absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent opacity-90",
+                      )}
+                    />
+                    <div
+                      className={cn(
+                        "absolute inset-0 bg-gradient-to-br opacity-30 mix-blend-overlay",
+                        styles.gradient,
+                      )}
+                    />
+                    {/* Category badge over image */}
+                    <div className="absolute left-3 top-3">
+                      <span
+                        className={cn(
+                          "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur-md",
+                          styles.border,
+                          styles.bg,
+                          styles.text,
+                        )}
+                      >
+                        <CatIcon className="h-3 w-3" />
+                        {project.category}
+                      </span>
+                    </div>
+                    {/* Year badge */}
+                    <div className="absolute right-3 top-3">
+                      <span className="rounded-md border border-border/60 bg-background/80 px-2 py-0.5 font-mono text-[10px] text-foreground backdrop-blur-md">
+                        {project.year}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Gradient backdrop */}
                 <div
                   className={cn(
@@ -115,32 +161,41 @@ export function Projects() {
                   )}
                 />
 
-                <div className="relative">
+                <div className="relative p-5 sm:p-7">
                   {/* Header */}
                   <div className="mb-4 flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div
-                        className={cn(
-                          "grid h-11 w-11 place-items-center rounded-xl border",
-                          styles.border,
-                          styles.bg,
-                          styles.text,
-                        )}
-                      >
-                        <CatIcon className="h-5 w-5" />
-                      </div>
+                      {/* Icon shown only when no image */}
+                      {!project.imageUrl && (
+                        <div
+                          className={cn(
+                            "grid h-11 w-11 place-items-center rounded-xl border",
+                            styles.border,
+                            styles.bg,
+                            styles.text,
+                          )}
+                        >
+                          <CatIcon className="h-5 w-5" />
+                        </div>
+                      )}
                       <div>
-                        <p className={cn("font-mono text-[10px] uppercase tracking-[0.2em]", styles.text)}>
-                          {project.category}
-                        </p>
+                        {/* Category only when no image (otherwise it's on image) */}
+                        {!project.imageUrl && (
+                          <p className={cn("font-mono text-[10px] uppercase tracking-[0.2em]", styles.text)}>
+                            {project.category}
+                          </p>
+                        )}
                         <h3 className="text-base font-semibold leading-tight sm:text-lg">
                           {project.title}
                         </h3>
                       </div>
                     </div>
-                    <span className="shrink-0 rounded-md border border-border/60 bg-background/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
-                      {project.year}
-                    </span>
+                    {/* Year only when no image */}
+                    {!project.imageUrl && (
+                      <span className="shrink-0 rounded-md border border-border/60 bg-background/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                        {project.year}
+                      </span>
+                    )}
                   </div>
 
                   {/* Meta */}

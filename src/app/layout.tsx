@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
 import { PROFILE, SOCIAL_LINKS } from "@/lib/profile-data";
 
 const inter = Inter({
@@ -173,6 +174,10 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          {/* Vercel Analytics — privacy-friendly, sans cookies, GDPR compliant
+              S'active automatiquement en production sur Vercel.
+              En dev, n'envoie pas de données. */}
+          <Analytics mode={process.env.NODE_ENV === "production" ? "production" : "auto"} />
         </ThemeProvider>
       </body>
     </html>

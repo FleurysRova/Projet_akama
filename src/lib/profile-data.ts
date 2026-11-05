@@ -206,6 +206,8 @@ export interface ProjectItem {
   color: "violet" | "cyan" | "green" | "amber";
   tags: string[];
   metrics?: { label: string; value: string }[];
+  /** Image miniature générée pour le projet (chemin dans /public). */
+  imageUrl?: string;
 }
 
 export const PROJECTS: ProjectItem[] = [
@@ -229,6 +231,7 @@ export const PROJECTS: ProjectItem[] = [
       { label: "Durée", value: "3 min 40" },
       { label: "Plates-formes", value: "4" },
     ],
+    imageUrl: "/projects/project-1-clip-musical.png",
   },
   {
     id: "branding-identite-marque",
@@ -250,6 +253,7 @@ export const PROJECTS: ProjectItem[] = [
       { label: "Livraisons", value: "12+" },
       { label: "Supports", value: "Print + Digital" },
     ],
+    imageUrl: "/projects/project-2-branding.png",
   },
   {
     id: "content-social-tiktok",
@@ -271,6 +275,7 @@ export const PROJECTS: ProjectItem[] = [
       { label: "Vidéos", value: "50+" },
       { label: "Vues cumulées", value: "120K+" },
     ],
+    imageUrl: "/projects/project-3-tiktok.png",
   },
   {
     id: "habillage-visuel-evenement",
@@ -292,6 +297,7 @@ export const PROJECTS: ProjectItem[] = [
       { label: "Jours de tournage", value: "3" },
       { label: "Séquences animées", value: "20+" },
     ],
+    imageUrl: "/projects/project-4-evenementiel.png",
   },
   {
     id: "production-clip-promo",
@@ -313,6 +319,7 @@ export const PROJECTS: ProjectItem[] = [
       { label: "Formats", value: "2" },
       { label: "Durée", value: "45 s" },
     ],
+    imageUrl: "/projects/project-5-promo.png",
   },
   {
     id: "charte-youtube-chaine",
@@ -334,6 +341,7 @@ export const PROJECTS: ProjectItem[] = [
       { label: "Abonnés gagnés", value: "+8K" },
       { label: "Vidéos habillées", value: "30+" },
     ],
+    imageUrl: "/projects/project-6-youtube.png",
   },
 ];
 

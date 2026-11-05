@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { PROFILE } from "@/lib/profile-data";
 import { useAudio } from "@/components/audio-provider";
 import { ContactForm } from "@/components/ContactForm";
+import { ShareButtons } from "@/components/ShareButtons";
 
 interface FooterProps {
   onOpenTerminal: () => void;
@@ -90,6 +91,11 @@ export function Footer({ onOpenTerminal }: FooterProps) {
                   <Terminal className="mr-2 h-3.5 w-3.5" />
                   Assistant IA
                 </Button>
+              </div>
+
+              {/* Share buttons */}
+              <div className="mt-5">
+                <ShareButtons compact />
               </div>
             </div>
 

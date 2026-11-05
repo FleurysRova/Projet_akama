@@ -395,3 +395,54 @@
     animation: none !important;
   }
 }
+
+/* ============================================================
+   Print styles — Export PDF de la Synthèse Recruteur
+   Quand l'utilisateur clique sur "Imprimer / Save PDF" dans
+   le modal recruteur, on masque tout sauf le contenu du modal.
+   ============================================================ */
+@media print {
+  /* Masquer tout par défaut */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Afficher uniquement le contenu du modal recruteur */
+  .recruiter-print,
+  .recruiter-print * {
+    visibility: visible;
+  }
+
+  /* Positionner le modal en haut de la page d'impression */
+  .recruiter-print {
+    position: absolute;
+    inset: 0;
+    max-height: none !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Forcer le fond blanc pour l'impression */
+  .recruiter-print {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Masquer les éléments interactifs inutiles en impression */
+  .recruiter-print button,
+  .recruiter-print .sticky {
+    display: none !important;
+  }
+
+  /* Éviter les coupures de page au milieu d'un bloc */
+  .recruiter-print section {
+    page-break-inside: avoid;
+  }
+
+  /* Marges d'impression réduites */
+  @page {
+    margin: 1.5cm;
+  }
+}
