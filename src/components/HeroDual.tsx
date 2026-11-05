@@ -355,10 +355,10 @@ function ProfilePhoto() {
   return (
     <div className="group relative h-72 w-60 sm:h-80 sm:w-64 lg:h-96 lg:w-80">
       {/* Glow halo */}
-      <div className="pointer-events-none absolute -inset-4 -z-10 rounded-full bg-gradient-to-br from-violet-500/40 via-cyan-500/30 to-emerald-500/20 opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-90" />
+      <div className="pointer-events-none absolute -inset-4 -z-10 rounded-full bg-gradient-to-br from-violet-500/40 via-cyan-500/30 to-emerald-500/20 opacity-60 blur-2xl transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" />
 
       {/* Rotating gradient ring */}
-      <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-violet-500 via-cyan-500 to-emerald-500 opacity-70 blur-md transition-all duration-700 group-hover:opacity-100" />
+      <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-violet-500 via-cyan-500 to-emerald-500 opacity-70 blur-md transition-all duration-700 group-hover:scale-110 group-hover:opacity-100 group-hover:rotate-2" />
 
       {/* Photo container — photo plein cadre + overlay sci-fi */}
       <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-slate-950 via-violet-950/40 to-slate-950 shadow-2xl">
@@ -382,7 +382,7 @@ function ProfilePhoto() {
             src={PROFILE.avatarUrl}
             alt={PROFILE.avatarAlt}
             onError={() => setPhotoError(true)}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-125 group-hover:rotate-1"
           />
         )}
 

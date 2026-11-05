@@ -52,8 +52,10 @@ export function ProfileAvatar({
   const [errored, setErrored] = React.useState(false);
 
   // Common container classes (gradient sci-fi backdrop)
+  // Le conteneur est un "group" pour réagir au hover via group-hover:* sur
+  // l'image (effet zoom au survol). Le halo néon s'intensifie aussi au hover.
   const containerClasses = cn(
-    "relative grid place-items-center overflow-hidden bg-gradient-to-br from-slate-950 via-violet-950/40 to-slate-950 font-mono font-bold leading-none text-gradient-cv",
+    "group relative grid place-items-center overflow-hidden bg-gradient-to-br from-slate-950 via-violet-950/40 to-slate-950 font-mono font-bold leading-none text-gradient-cv transition-transform duration-300 hover:scale-105",
     SIZE_CLASS[size],
     RING_CLASS[size],
     className,
@@ -61,13 +63,16 @@ export function ProfileAvatar({
 
   return (
     <div className={containerClasses}>
+      {/* Halo néon au hover */}
+      <div className="pointer-events-none absolute -inset-1 -z-10 rounded-[inherit] bg-gradient-to-br from-violet-500/40 via-cyan-500/30 to-emerald-500/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+
       {/* Image — fallback to initials on error */}
       {!errored && (
         <img
           src={PROFILE.avatarUrl}
           alt={alt}
           onError={() => setErrored(true)}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-125"
           {...imgProps}
         />
       )}
