@@ -9,7 +9,7 @@ export function LanguagesSection() {
   return (
     <section
       id="languages"
-      className="relative border-t border-border/40 py-20"
+      className="relative border-t border-border/40 py-12 sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-40" />
       <div className="pointer-events-none absolute left-1/4 top-10 -z-10 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl" />
@@ -21,7 +21,7 @@ export function LanguagesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center sm:mb-12"
         >
           <p className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-emerald-500">
             ./languages

@@ -21,7 +21,7 @@ const INTEREST_ICONS: Record<string, LucideIcon> = {
 
 export function EducationInterests() {
   return (
-    <section className="relative border-t border-border/40 py-20">
+    <section className="relative border-t border-border/40 py-12 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Education */}

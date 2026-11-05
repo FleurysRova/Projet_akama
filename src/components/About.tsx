@@ -9,7 +9,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t border-border/40 py-20"
+      className="relative overflow-hidden border-t border-border/40 py-12 sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50" />
       <div className="pointer-events-none absolute -left-20 top-10 -z-10 h-60 w-60 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -21,7 +21,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="mb-12 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between"
+          className="mb-8 flex flex-col items-start gap-2 sm:mb-12 sm:flex-row sm:items-center sm:justify-between"
         >
           <div>
             <p className="mb-1 font-mono text-xs uppercase tracking-[0.25em] text-cyan-500">

@@ -63,7 +63,7 @@ export function AITools({ onOpenSettings }: { onOpenSettings?: () => void }) {
   return (
     <section
       id="ai-tools"
-      className="relative border-t border-border/40 py-20"
+      className="relative border-t border-border/40 py-12 sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-40" />
       <div className="pointer-events-none absolute left-1/3 top-0 -z-10 h-72 w-72 rounded-full bg-violet-500/15 blur-[100px]" />
@@ -75,7 +75,7 @@ export function AITools({ onOpenSettings }: { onOpenSettings?: () => void }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center sm:mb-12"
         >
           <p className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-cyan-500">
             ./ai-powered-workflow
@@ -91,7 +91,7 @@ export function AITools({ onOpenSettings }: { onOpenSettings?: () => void }) {
         </motion.div>
 
         {/* AI Tools grid */}
-        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-8 grid gap-4 sm:mb-12 sm:grid-cols-2 lg:grid-cols-4">
           {AI_TOOLS.map((tool, i) => {
             const styles = COLOR_STYLES[tool.color];
             const Icon = ICONS[tool.icon];
@@ -151,7 +151,7 @@ export function AITools({ onOpenSettings }: { onOpenSettings?: () => void }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="mb-12 rounded-2xl border border-border/60 bg-card/40 p-6 backdrop-blur-md sm:p-8"
+          className="mb-8 rounded-2xl sm:mb-12 border border-border/60 bg-card/40 p-6 backdrop-blur-md sm:p-8"
         >
           <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
             Workflow créatif augmenté par IA

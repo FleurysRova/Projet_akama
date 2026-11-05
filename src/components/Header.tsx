@@ -126,7 +126,7 @@ export function Header({ onOpenTerminal, onOpenQuickView, onOpenSettings }: Head
             variant="ghost"
             size="icon"
             aria-label="Paramètres IA & effets"
-            className="h-9 w-9 rounded-full border border-violet-500/30 text-violet-500 hover:border-violet-500/60 hover:bg-violet-500/10"
+            className="hidden h-9 w-9 rounded-full border border-violet-500/30 text-violet-500 hover:border-violet-500/60 hover:bg-violet-500/10 sm:flex"
           >
             <Settings2 className="h-4 w-4" />
           </Button>
@@ -152,10 +152,10 @@ export function Header({ onOpenTerminal, onOpenQuickView, onOpenSettings }: Head
             }}
             onMouseEnter={() => play("hover")}
             size="sm"
-            className="h-9 gap-1.5 bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
+            className="hidden h-9 gap-1.5 bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500 sm:flex"
           >
             <Terminal className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">IA Assistant</span>
+            <span className="hidden md:inline">IA Assistant</span>
           </Button>
 
           <Button
@@ -194,7 +194,17 @@ export function Header({ onOpenTerminal, onOpenQuickView, onOpenSettings }: Head
                   {item.label}
                 </a>
               ))}
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <Button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    onOpenTerminal();
+                  }}
+                  size="sm"
+                  className="bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
+                >
+                  <Terminal className="mr-1.5 h-3.5 w-3.5" /> Assistant IA
+                </Button>
                 <Button
                   onClick={() => {
                     setMenuOpen(false);
@@ -202,15 +212,25 @@ export function Header({ onOpenTerminal, onOpenQuickView, onOpenSettings }: Head
                   }}
                   variant="outline"
                   size="sm"
-                  className="flex-1 border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
+                  className="border-violet-500/40 bg-violet-500/5 text-violet-600 dark:text-violet-300"
                 >
                   <Zap className="mr-1.5 h-3.5 w-3.5" /> Recruteur
+                </Button>
+                <Button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    onOpenSettings();
+                  }}
+                  variant="outline"
+                  size="sm"
+                  className="border-violet-500/30 text-violet-600 dark:text-violet-300"
+                >
+                  <Settings2 className="mr-1.5 h-3.5 w-3.5" /> Paramètres IA
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   size="sm"
-                  className="flex-1"
                 >
                   <a href={`mailto:${PROFILE.email}`}>
                     <Mail className="mr-1.5 h-3.5 w-3.5" /> Email

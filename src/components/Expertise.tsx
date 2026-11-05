@@ -52,7 +52,7 @@ export function Expertise() {
   return (
     <section
       id="expertises"
-      className="relative border-t border-border/40 py-20"
+      className="relative border-t border-border/40 py-12 sm:py-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -60,7 +60,7 @@ export function Expertise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center sm:mb-12"
         >
           <p className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-cyan-500">
             ./expertises

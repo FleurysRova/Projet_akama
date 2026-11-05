@@ -54,7 +54,7 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
   return (
     <section
       id="hero"
-      className="relative isolate overflow-hidden pt-24 pb-16 md:pt-28 md:pb-24 aurora bg-grid"
+      className="relative isolate overflow-hidden pt-20 pb-12 sm:pt-24 md:pt-28 md:pb-24 aurora bg-grid"
     >
       {/* Floating decorative blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -69,7 +69,7 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 flex flex-wrap items-center justify-between gap-4"
+          className="mb-6 flex flex-wrap items-center justify-between gap-3 sm:mb-8 sm:gap-4"
         >
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -100,14 +100,17 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
           </Badge>
         </motion.div>
 
-        {/* ===== MAIN HERO : PHOTO + HEADLINE ===== */}
+        {/* ===== MAIN HERO : PHOTO + HEADLINE =====
+             Sur mobile (par défaut) : texte d'abord (order-1), photo ensuite
+             (order-2), pour que la proposition de valeur soit visible avant
+             le visuel décoratif. Sur desktop (lg) : photo à droite. */}
         <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
           {/* Left : Name + headline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="order-2 lg:order-1"
+            className="order-1 lg:order-1"
           >
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-500/5 px-3 py-1 text-xs font-mono text-violet-600 dark:text-violet-300 backdrop-blur">
               <Wand2 className="h-3.5 w-3.5" />
@@ -228,7 +231,7 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
             initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.15, type: "spring", damping: 18 }}
-            className="order-1 mx-auto lg:order-2"
+            className="order-2 mx-auto lg:order-2"
           >
             <ProfilePhoto />
           </motion.div>
@@ -239,27 +242,27 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="group relative mt-14 overflow-hidden rounded-2xl border border-violet-500/30 bg-card/60 p-6 backdrop-blur-md transition-all hover:border-violet-500/50 hover:shadow-2xl hover:shadow-violet-500/10 sm:p-8"
+          className="group relative mt-10 overflow-hidden rounded-2xl border border-violet-500/30 bg-card/60 p-5 backdrop-blur-md transition-all hover:border-violet-500/50 hover:shadow-2xl hover:shadow-violet-500/10 sm:p-8 sm:mt-14"
         >
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-70">
             <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-400 opacity-30 blur-3xl" />
             <div className="absolute bottom-0 right-1/3 h-32 w-32 rounded-full bg-gradient-to-tr from-emerald-400 to-cyan-400 opacity-25 blur-2xl" />
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[auto_1fr] lg:items-center">
+          <div className="grid gap-5 sm:gap-6 lg:grid-cols-[auto_1fr] lg:items-center">
             {/* Left : identity */}
-            <div className="flex items-center gap-4">
-              <div className="grid h-14 w-14 place-items-center rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-500/15 to-fuchsia-500/10 text-violet-500">
-                <Palette className="h-7 w-7" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-500/15 to-fuchsia-500/10 text-violet-500 sm:h-14 sm:w-14">
+                <Palette className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500">
+              <div className="min-w-0">
+                <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-violet-500 sm:text-[10px]">
                   Cœur de métier · Creative Media
                 </p>
-                <h3 className="text-xl font-semibold leading-tight sm:text-2xl">
+                <h3 className="text-lg font-semibold leading-tight sm:text-2xl">
                   Design Graphique & Production Vidéo Studio
                 </h3>
-                <p className="mt-0.5 text-sm text-muted-foreground">
+                <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
                   Branding · Montage studio · Motion design · Habillage visuel
                 </p>
               </div>
@@ -290,21 +293,22 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
             </div>
           </div>
 
-          {/* Skill chips */}
-          <div className="mt-6 flex flex-wrap gap-1.5">
+          {/* Skill chips — pr sur mobile pour réserver la zone du FAB flottant */}
+          <div className="mt-5 flex flex-wrap gap-1.5 pr-14 sm:mt-6 sm:gap-2 sm:pr-0">
             {creativeSkills.slice(0, 10).map((s) => (
               <Badge
                 key={s}
                 variant="secondary"
-                className="rounded-md border border-violet-500/15 bg-violet-500/5 px-2 py-0.5 text-[11px] font-medium text-violet-600 dark:text-violet-300"
+                className="rounded-md border border-violet-500/15 bg-violet-500/5 px-2 py-1 text-[11px] font-medium text-violet-600 dark:text-violet-300"
               >
                 {s}
               </Badge>
             ))}
           </div>
 
-          {/* Stats row */}
-          <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border/40 pt-5 text-center">
+          {/* Stats row — marge basse sur mobile pour dégager la zone du FAB flottant
+              (FAB = 48px de haut + 20px de marge = ~68px ; on reserve 80px) */}
+          <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border/40 pt-5 pb-20 text-center sm:pb-2">
             {[
               { icon: Brush, label: "Branding", value: "Logos & chartes", color: "text-violet-500" },
               { icon: Film, label: "Vidéo", value: "Studio & clips", color: "text-cyan-500" },
@@ -326,7 +330,7 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="mt-12 flex justify-center"
+          className="mt-8 flex justify-center sm:mt-12"
         >
           <div className="flex flex-col items-center gap-1 text-muted-foreground">
             <span className="font-mono text-[10px] uppercase tracking-[0.3em]">Scroll</span>
@@ -349,7 +353,7 @@ function ProfilePhoto() {
   const [photoError, setPhotoError] = React.useState(false);
 
   return (
-    <div className="group relative h-64 w-52 sm:h-80 sm:w-64 lg:h-96 lg:w-80">
+    <div className="group relative h-72 w-60 sm:h-80 sm:w-64 lg:h-96 lg:w-80">
       {/* Glow halo */}
       <div className="pointer-events-none absolute -inset-4 -z-10 rounded-full bg-gradient-to-br from-violet-500/40 via-cyan-500/30 to-emerald-500/20 opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-90" />
 
@@ -397,8 +401,9 @@ function ProfilePhoto() {
           LIVE
         </div>
 
-        {/* Bottom gradient + name overlay */}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-4 pt-10">
+        {/* Bottom gradient + name overlay — masqué sur mobile (le nom est
+            déjà dans la top-bar + le h1) pour éviter la triple répétition. */}
+        <div className="absolute inset-x-0 bottom-0 hidden bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-4 pt-10 sm:block">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300">
             Creative Media Specialist
           </p>
