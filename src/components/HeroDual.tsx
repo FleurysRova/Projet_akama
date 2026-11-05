@@ -383,11 +383,12 @@ const COLOR_STYLES: Record<string, { border: string; text: string; glow: string;
 // Positions des badges flottants (absolues par rapport au conteneur photo)
 // Sur mobile : à l'intérieur des bords de la photo (pour éviter l'overflow)
 // Sur desktop (sm+) : à l'extérieur (effet de débordement esthétique)
+// "bottom-right" placé plus haut (~30%) pour ne pas chevaucher le caption "Madagascar 🇲🇬".
 const POS_CLASSES: Record<string, string> = {
   "top-right": "right-2 top-[12%] sm:-right-3",
-  "right-mid": "right-2 top-1/2 sm:-right-4",
-  "bottom-right": "right-2 bottom-[18%] sm:-right-3",
-  "left-mid": "left-2 top-1/2 sm:-left-4",
+  "right-mid": "right-2 top-[42%] sm:top-1/2 sm:-right-4",
+  "bottom-right": "right-2 bottom-[30%] sm:bottom-[18%] sm:-right-3",
+  "left-mid": "left-2 top-[42%] sm:top-1/2 sm:-left-4",
 };
 
 function ProfilePhoto() {
@@ -442,13 +443,14 @@ function ProfilePhoto() {
           LIVE
         </div>
 
-        {/* Bottom gradient + name overlay — masqué sur mobile (le nom est
-            déjà dans la top-bar + le h1) pour éviter la triple répétition. */}
-        <div className="absolute inset-x-0 bottom-0 hidden bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-4 pt-10 sm:block">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-300">
+        {/* Bottom gradient + name overlay — visible sur mobile ET desktop.
+            Affiche "Creative Media Specialist / Madagascar 🇲🇬" en bas de
+            la photo avec un dégradé pour la lisibilité. */}
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-3 pt-8 sm:p-4 sm:pt-10">
+          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-violet-300 sm:text-[10px]">
             Creative Media Specialist
           </p>
-          <p className="text-sm font-semibold text-white sm:text-base">
+          <p className="text-xs font-semibold text-white sm:text-sm sm:text-base">
             Madagascar 🇲🇬
           </p>
         </div>
