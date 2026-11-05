@@ -381,11 +381,13 @@ const COLOR_STYLES: Record<string, { border: string; text: string; glow: string;
 };
 
 // Positions des badges flottants (absolues par rapport au conteneur photo)
+// Sur mobile : à l'intérieur des bords de la photo (pour éviter l'overflow)
+// Sur desktop (sm+) : à l'extérieur (effet de débordement esthétique)
 const POS_CLASSES: Record<string, string> = {
-  "top-right": "-right-3 top-[12%]",
-  "right-mid": "-right-4 top-1/2",
-  "bottom-right": "-right-3 bottom-[18%]",
-  "left-mid": "-left-4 top-1/2",
+  "top-right": "right-2 top-[12%] sm:-right-3",
+  "right-mid": "right-2 top-1/2 sm:-right-4",
+  "bottom-right": "right-2 bottom-[18%] sm:-right-3",
+  "left-mid": "left-2 top-1/2 sm:-left-4",
 };
 
 function ProfilePhoto() {
@@ -453,8 +455,10 @@ function ProfilePhoto() {
       </div>
 
       {/* ===== Éléments flottants décoratifs (badges + orbes + étincelles) =====
-          Masqués sur mobile pour ne pas surcharger. Animent en Y avec des
-          délais différents pour créer un effet parallaxe. */}
+          Visibles sur mobile ET desktop. Sur mobile : à l'intérieur des bords
+          de la photo (tailles réduites) ; sur desktop (sm+) : à l'extérieur
+          (effet de débordement esthétique). Animent en Y avec des délais
+          différents pour créer un effet parallaxe. */}
 
       {/* Badges de compétences flottants */}
       {FLOATING_BADGES.map((badge) => {
@@ -464,7 +468,7 @@ function ProfilePhoto() {
           <motion.div
             key={badge.id}
             className={cn(
-              "pointer-events-none absolute z-20 hidden sm:block",
+              "pointer-events-none absolute z-20",
               POS_CLASSES[badge.pos],
             )}
             initial={{ opacity: 0, scale: 0.8 }}
@@ -486,35 +490,35 @@ function ProfilePhoto() {
           >
             <div
               className={cn(
-                "relative flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 font-mono text-[10px] font-medium backdrop-blur-md",
+                "relative flex items-center gap-1 rounded border bg-slate-950/80 px-1.5 py-1 font-mono text-[8px] font-medium backdrop-blur-md sm:gap-1.5 sm:rounded-lg sm:px-2.5 sm:py-1.5 sm:text-[10px]",
                 colors.border,
-                colors.bg,
                 colors.text,
               )}
             >
               {/* Halo glow derrière le badge */}
               <span
                 className={cn(
-                  "absolute -inset-1 -z-10 rounded-lg opacity-50 blur-md",
+                  "absolute -inset-1 -z-10 rounded opacity-50 blur-md sm:rounded-lg",
                   colors.glow,
                 )}
               />
-              <Icon className="h-3 w-3" />
+              <Icon className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
               <span className="uppercase tracking-wider">{badge.label}</span>
             </div>
           </motion.div>
         );
       })}
 
-      {/* Orbes flottants (petits cercles colorés) */}
+      {/* Orbes flottants (petits cercles colorés) — visibles sur mobile aussi,
+          positionnés à l'intérieur des bords de la photo */}
       {[
-        { pos: "-top-3 left-1/3", color: "bg-violet-400", size: "h-2 w-2", delay: 0.3 },
-        { pos: "-bottom-3 right-1/3", color: "bg-cyan-400", size: "h-1.5 w-1.5", delay: 1.5 },
-        { pos: "top-[35%] -left-2", color: "bg-emerald-400", size: "h-2 w-2", delay: 2 },
+        { pos: "top-1 left-1/3 sm:-top-3", color: "bg-violet-400", size: "h-1.5 w-1.5 sm:h-2 sm:w-2", delay: 0.3 },
+        { pos: "bottom-1 right-1/3 sm:-bottom-3", color: "bg-cyan-400", size: "h-1.5 w-1.5 sm:h-1.5 sm:w-1.5", delay: 1.5 },
+        { pos: "top-[35%] left-1 sm:top-[35%] sm:-left-2", color: "bg-emerald-400", size: "h-1.5 w-1.5 sm:h-2 sm:w-2", delay: 2 },
       ].map((orb, i) => (
         <motion.div
           key={`orb-${i}`}
-          className={cn("pointer-events-none absolute z-20 hidden rounded-full sm:block", orb.pos, orb.color, orb.size)}
+          className={cn("pointer-events-none absolute z-20 rounded-full", orb.pos, orb.color, orb.size)}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
             opacity: [0, 1, 0],
@@ -530,14 +534,14 @@ function ProfilePhoto() {
         />
       ))}
 
-      {/* Étincelles (Sparkles) flottantes */}
+      {/* Étincelles (Sparkles) flottantes — visibles sur mobile aussi */}
       {[
-        { pos: "top-[15%] -right-2", delay: 0.5 },
-        { pos: "bottom-[12%] -left-2", delay: 1.8 },
+        { pos: "top-[15%] right-1 sm:top-[15%] sm:-right-2", delay: 0.5 },
+        { pos: "bottom-[12%] left-1 sm:bottom-[12%] sm:-left-2", delay: 1.8 },
       ].map((spark, i) => (
         <motion.div
           key={`spark-${i}`}
-          className={cn("pointer-events-none absolute z-20 hidden text-violet-300 sm:block", spark.pos)}
+          className={cn("pointer-events-none absolute z-20 text-violet-300", spark.pos)}
           initial={{ opacity: 0, scale: 0, rotate: 0 }}
           animate={{
             opacity: [0, 1, 0],
@@ -552,7 +556,7 @@ function ProfilePhoto() {
             delay: spark.delay,
           }}
         >
-          <Sparkles className="h-3 w-3" />
+          <Sparkles className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
         </motion.div>
       ))}
     </div>
