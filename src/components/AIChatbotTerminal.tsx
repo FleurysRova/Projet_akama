@@ -96,17 +96,9 @@ export function AIChatbotTerminal({ open, onClose }: AIChatbotTerminalProps) {
   );
 
   const handleAsk = React.useCallback(
-    (rawQuestion: string) => {
+    async (rawQuestion: string) => {
       const question = rawQuestion.trim();
       if (!question || typing) return;
-
-      // Find matching Q&A
-      const match =
-        AI_QA.find(
-          (q) =>
-            q.question.toLowerCase() === question.toLowerCase() ||
-            q.id === question.toLowerCase(),
-        ) ?? fuzzyMatch(question);
 
       const userMsg: Message = {
         id: Math.random().toString(36).slice(2),
@@ -117,18 +109,37 @@ export function AIChatbotTerminal({ open, onClose }: AIChatbotTerminalProps) {
       setMessages((prev) => [...prev, userMsg]);
       play("click");
 
-      const response = match
-        ? match.answer
-        : `Je n'ai pas trouvé de réponse exacte à "${question}". Essayez une question clé ci-dessous ou contactez Elie directement à ${PROFILE.email} pour des infos personnalisées. 🚀`;
+      // Historique léger à passer à l'API (messages précédents sans le welcome)
+      const history = messages
+        .filter((m) => m.id !== WELCOME.id)
+        .slice(-6)
+        .map((m) => ({ role: m.role === "user" ? "user" : "assistant", content: m.content }));
 
-      // Simulate thinking delay
-      const thinkingDelay = setTimeout(() => {
+      try {
+        // Appel à la vraie IA via /api/chat (z-ai-web-dev-sdk côté serveur)
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: question, history }),
+        });
+        const data = await res.json();
+
+        const response: string =
+          data?.response?.trim() ||
+          data?.fallback ||
+          `Je n'ai pas pu générer de réponse. Contactez Elie à ${PROFILE.email}.`;
         typewriter(response);
-      }, 400);
-
-      return () => clearTimeout(thinkingDelay);
+      } catch (err) {
+        // Fallback local si l'API échoue (offline, erreur réseau, etc.)
+        console.error("[AIChatbotTerminal] fetch failed:", err);
+        const fallback = fuzzyMatch(question);
+        const response: string = fallback
+          ? fallback.answer
+          : `Désolé, connexion à l'IA impossible. Essayez une suggestion ci-dessous ou écrivez à ${PROFILE.email}.`;
+        setTimeout(() => typewriter(response), 300);
+      }
     },
-    [typing, typewriter, play],
+    [typing, typewriter, play, messages],
   );
 
   const handleSubmit = (e: React.FormEvent) => {

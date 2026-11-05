@@ -364,3 +364,34 @@
       linear-gradient(135deg, #06b6d4, #8b5cf6, #10b981) border-box;
   }
 }
+
+/* ============================================================
+   prefers-reduced-motion — Accessibilité WCAG 2.3.3
+   Désactive toutes les animations en boucle (orbes, badges
+   flottants, scanlines, marquee, pulse-dot, bounce, spin)
+   pour les utilisateurs sensibles au mouvement.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Conserve les transitions de survol essentielles (zoom photo) mais
+     sans le mouvement de flottement infini. */
+  .pulse-dot,
+  .float,
+  .marquee-track,
+  .scanlines,
+  .animate-bounce,
+  .animate-spin,
+  .animate-pulse,
+  .aurora::before,
+  .aurora::after {
+    animation: none !important;
+  }
+}

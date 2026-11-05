@@ -40,7 +40,13 @@ export function RecruiterQuickView({ open, onClose }: RecruiterQuickViewProps) {
 
   const handleDownload = () => {
     play("success");
-    window.open(PROFILE.resumeUrl, "_blank");
+    // Téléchargement direct du CV via <a download>
+    const link = document.createElement("a");
+    link.href = PROFILE.resumeUrl;
+    link.download = "CV-Elie-Tinah-Ramanjakavelosoa.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleContact = () => {

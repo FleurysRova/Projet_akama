@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PROFILE, SOCIAL_LINKS } from "@/lib/profile-data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -109,6 +110,44 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
+// Structured data JSON-LD (Person schema) — aide Google à générer un
+// Knowledge Panel et améliore le référencement du profil professionnel.
+const SITE_URL_JSONLD = "https://elie-tinah-portfolio.vercel.app";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: PROFILE.name,
+  givenName: PROFILE.firstName,
+  familyName: PROFILE.lastName,
+  jobTitle: PROFILE.title,
+  description: PROFILE.profileSummary,
+  email: `mailto:${PROFILE.email}`,
+  telephone: PROFILE.phone,
+  birthDate: "2009-12-02",
+  nationality: {
+    "@type": "Country",
+    name: PROFILE.country,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: PROFILE.location.split(",")[0].trim(),
+    addressCountry: "MG",
+  },
+  url: SITE_URL_JSONLD,
+  image: `${SITE_URL_JSONLD}/og-image.png`,
+  knowsAbout: [
+    "Design Graphique",
+    "Branding",
+    "Production Vidéo",
+    "Motion Design",
+    "Stratégie Digitale",
+    "Développement de Logiciels",
+  ],
+  knowsLanguage: ["Malagasy", "French", "English", "Portuguese"],
+  sameAs: SOCIAL_LINKS.filter((l) => l.href.startsWith("http")).map((l) => l.href),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,6 +155,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
+      <head>
+        {/* Structured data JSON-LD (Person schema) pour Google Knowledge Panel */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground selection:bg-cyan-500/30`}
       >

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Palette,
   Sparkles,
@@ -48,7 +49,14 @@ export function HeroDual({ onOpenQuickView, onOpenTerminal }: HeroDualProps) {
 
   const handleDownload = () => {
     play("success");
-    window.open(PROFILE.resumeUrl, "_blank");
+    // Téléchargement direct du CV : on crée un lien <a> avec l'attribut
+    // download pour forcer le téléchargement plutôt que l'ouverture dans un onglet.
+    const link = document.createElement("a");
+    link.href = PROFILE.resumeUrl;
+    link.download = "CV-Elie-Tinah-Ramanjakavelosoa.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -420,11 +428,14 @@ function ProfilePhoto() {
             <p className="text-xs font-semibold text-white sm:text-sm">Ramanjakavelosoa</p>
           </div>
         ) : (
-          <img
+          <Image
             src={PROFILE.avatarUrl}
             alt={PROFILE.avatarAlt}
             onError={() => setPhotoError(true)}
+            fill
+            sizes="(min-width: 1024px) 320px, (min-width: 640px) 256px, 240px"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-125 group-hover:rotate-1"
+            priority
           />
         )}
 

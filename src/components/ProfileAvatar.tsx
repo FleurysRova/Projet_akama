@@ -16,17 +16,21 @@
  */
 
 import * as React from "react";
+import Image from "next/image";
 import { PROFILE } from "@/lib/profile-data";
 import { cn } from "@/lib/utils";
 
 type Size = "sm" | "md" | "lg";
 
-interface ProfileAvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface ProfileAvatarProps {
   size?: Size;
   /** Afficher l'anneau rotatif sci-fi autour de l'avatar (par défaut sur "lg"). */
   ring?: boolean;
   /** Afficher le point vert "LIVE" pulsé (par défaut sur "lg"). */
   liveDot?: boolean;
+  /** Alt text pour l'image (par défaut : PROFILE.avatarAlt). */
+  alt?: string;
+  className?: string;
 }
 
 const SIZE_CLASS: Record<Size, string> = {
@@ -41,13 +45,19 @@ const RING_CLASS: Record<Size, string> = {
   lg: "border-2 border-violet-500/40",
 };
 
+// Largeur en pixels pour next/image (basé sur la taille du conteneur)
+const SIZE_PX: Record<Size, number> = {
+  sm: 36,
+  md: 56,
+  lg: 144,
+};
+
 export function ProfileAvatar({
   size = "md",
   ring = false,
   liveDot = false,
-  className,
   alt = PROFILE.avatarAlt,
-  ...imgProps
+  className,
 }: ProfileAvatarProps) {
   const [errored, setErrored] = React.useState(false);
 
@@ -68,12 +78,14 @@ export function ProfileAvatar({
 
       {/* Image — fallback to initials on error */}
       {!errored && (
-        <img
+        <Image
           src={PROFILE.avatarUrl}
           alt={alt}
           onError={() => setErrored(true)}
+          fill
+          sizes={`${SIZE_PX[size]}px`}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-125"
-          {...imgProps}
+          // Le CV est une image statique servie localement, pas besoin de priority
         />
       )}
       {errored && (
