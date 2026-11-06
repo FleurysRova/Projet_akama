@@ -23,7 +23,7 @@ export const PROFILE = {
   country: "Madagascar",
   mobility: "Opérations & Achats Internationaux",
   email: "elie.tinah.r@gmail.com",
-  phone: "+261 34 00 00 00",
+  phone: "+261 34 43 92 639",
   availability: "Ouvert aux opportunités internationales & remote",
   profileSummary:
     "Creative Media Specialist passionné par l'innovation visuelle et la production multimédia. J'orchestre des projets créatifs de A à Z : identité visuelle, branding, production vidéo studio, clips, motion design et stratégie de contenu. Une double casquette créatif + technique qui me permet de transformer une idée en univers visuel complet, avec autonomie, rigueur et créativité.",
